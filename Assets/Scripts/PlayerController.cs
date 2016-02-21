@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     private Vector2 movement;
-    private bool jumped = false;
+    public bool inAir = false;
 
     void Start()
     {
@@ -19,11 +19,13 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    void FixedUpdate()
+    void Update()
     {
 
+
         
-        if (Input.GetAxis("Horizontal") < 0)
+
+            if (Input.GetAxis("Horizontal") < 0)
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
         }
@@ -33,21 +35,22 @@ public class PlayerController : MonoBehaviour {
         }
         if (Input.GetAxis("Vertical") > 0)
         {
-            if (jumped == false)
+            /* Ray2D characterRay = new Ray2D(Vector2.down, gameObject.transform.position);
+            RaycastHit2D hit = Physics2D.Raycast(characterRay.origin, characterRay.direction);
+            Debug.Log(hit); 
+            inAir = hit ? false : true;*/
+
+            inAir = Collider2D.IsTouching(ground);
+
+            if (!inAir)
             {
 
                 rb2d.AddForce(Vector2.up * jumpSpeed);
                 
-                jumped = true;
+                //inAir = true;
             }
             
         }
     }
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.name == "ground")
-        {
-            jumped = false;
-        }
-    }
+
 }
