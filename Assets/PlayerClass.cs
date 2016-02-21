@@ -13,6 +13,8 @@ public class PlayerClass : MonoBehaviour {
     public bool currentlyAttacking = false;
     public bool attackedAlready = false;
 
+    public GameObject myFist;
+
     // Use this for initialization
     void Start () {
 	
@@ -20,7 +22,7 @@ public class PlayerClass : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.Space))
+	    if (Input.GetButtonDown("Fire1"))
         {
             StartCoroutine(Attack(AttackType.Punch));
         }
@@ -29,9 +31,11 @@ public class PlayerClass : MonoBehaviour {
     IEnumerator Attack(AttackType executeAttack)
     {
         currentlyAttacking = true;
+        myFist.SetActive(true);
         Debug.Log(executeAttack);
 
         yield return new WaitForSeconds(attackTime);
+        myFist.SetActive(false);
         currentlyAttacking = false;
         attackedAlready = false;
     }
@@ -40,9 +44,9 @@ public class PlayerClass : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject otherObject = collision.collider.gameObject;
-        if (otherObject.tag == "Player")
+        if (otherObject.tag == "high")
         {
-            if (otherObject.GetComponent<PlayerClass>().currentlyAttacking && !attackedAlready)
+            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking && !attackedAlready)
             {
                 attackedAlready = true;
                 health -= attackDamage;
