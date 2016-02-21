@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerClass : MonoBehaviour {
 
     public float health = 100;
+    public Image myHealthBar;
+    private float initialHealth;
 
     private enum AttackType {Punch, Kick, Counter};
 
@@ -17,7 +20,7 @@ public class PlayerClass : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	
+        initialHealth = health;
 	}
 	
 	// Update is called once per frame
@@ -26,6 +29,7 @@ public class PlayerClass : MonoBehaviour {
         {
             StartCoroutine(Attack(AttackType.Punch));
         }
+        myHealthBar.fillAmount = health / initialHealth;
 	}
 
     IEnumerator Attack(AttackType executeAttack)
