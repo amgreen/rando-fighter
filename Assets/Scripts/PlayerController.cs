@@ -9,24 +9,45 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     private Vector2 movement;
+    private bool jumped = false;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        bool moveVertical = Input.GetButtonDown("Fire1");
-        if (moveVertical)
+
+        
+        if (Input.GetAxis("Horizontal") < 0)
         {
-            movement = new Vector2(moveHorizontal, jumpSpeed);
+            transform.position += Vector3.left * speed * Time.deltaTime;
         }
-        else
+        if (Input.GetAxis("Horizontal")>0)
         {
-            movement = new Vector2(moveHorizontal, 0);
+            transform.position += Vector3.right * speed * Time.deltaTime;
         }
-        rb2d.AddForce(movement*speed);
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            if (jumped == false)
+            {
+
+                rb2d.AddForce(Vector2.up * jumpSpeed);
+                
+                jumped = true;
+            }
+            
+        }
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.name == "ground")
+        {
+            jumped = false;
+        }
     }
 }
