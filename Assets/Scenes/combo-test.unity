@@ -171,8 +171,8 @@ GameObject:
   - 20: {fileID: 767871748}
   - 92: {fileID: 767871747}
   - 124: {fileID: 767871746}
-  - 81: {fileID: 767871745}
   - 114: {fileID: 767871750}
+  - 81: {fileID: 767871745}
   - 82: {fileID: 767871751}
   m_Layer: 0
   m_Name: Main Camera
@@ -256,10 +256,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 767871744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cccb4c77fc8f42f4bb830897ec43c7bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6064555be352f4b9ff48ae5d391b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyBufferSize: 8
+  keyBufferSize: 0
   comboTextLinger: 0
   keyInput: {fileID: 1318439830}
   comboOutput: {fileID: 1904292510}
