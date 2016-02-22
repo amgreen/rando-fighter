@@ -8,24 +8,15 @@ public class PlayerClass : MonoBehaviour {
     public Image myHealthBar;
     private float initialHealth;
 
-    private enum AttackType {High, Middle, Low, Projectile};
+    private enum AttackType {Punch, Kick, Counter};
 
-    public float attackTimeHigh = 1.0f;
-    public float attackTimeMiddle = 1.0f;
-    public float attackTimeLow = 1.0f;
-    public float attackTimeProjectile = 1.0f;
-    
-    public float attackDamageHigh = 10.0f;
-    public float attackDamageMiddle = 10.0f;
-    public float attackDamageLow = 10.0f;
-    public float attackDamageProjectile = 10.0f;
+    public float attackTime = 2.0f;
+    public float attackDamage = 10.0f;
 
     public bool currentlyAttacking = false;
     public bool attackedAlready = false;
 
     public GameObject myFist;
-    public GameObject middleFist;
-    public GameObject myFoot;
 
     // Use this for initialization
     void Start () {
@@ -34,17 +25,9 @@ public class PlayerClass : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.U))
+	    if (Input.GetButtonDown("Fire1"))
         {
-            StartCoroutine(Attack(AttackType.High));
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            StartCoroutine(Attack(AttackType.Middle));
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            StartCoroutine(Attack(AttackType.Low));
+            StartCoroutine(Attack(AttackType.Punch));
         }
         myHealthBar.fillAmount = health / initialHealth;
 	}
@@ -52,26 +35,11 @@ public class PlayerClass : MonoBehaviour {
     IEnumerator Attack(AttackType executeAttack)
     {
         currentlyAttacking = true;
+        myFist.SetActive(true);
         Debug.Log(executeAttack);
-        if (executeAttack == AttackType.High)
-        {
 
-            myFist.SetActive(true);
-            yield return new WaitForSeconds(attackTimeHigh);
-            myFist.SetActive(false);
-        }
-        if (executeAttack == AttackType.Middle)
-        {
-            middleFist.SetActive(true);
-            yield return new WaitForSeconds(attackTimeMiddle);
-            middleFist.SetActive(false);
-        }
-        if (executeAttack == AttackType.Low)
-        {
-            myFoot.SetActive(true);
-            yield return new WaitForSeconds(attackTimeLow);
-            myFoot.SetActive(false);
-        }      
+        yield return new WaitForSeconds(attackTime);
+        myFist.SetActive(false);
         currentlyAttacking = false;
         attackedAlready = false;
     }
@@ -82,28 +50,10 @@ public class PlayerClass : MonoBehaviour {
         GameObject otherObject = collision.collider.gameObject;
         if (otherObject.tag == "high")
         {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
+            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking && !attackedAlready)
             {
                 attackedAlready = true;
-                health -= attackDamageHigh;
-                Debug.Log("Health: " + health);
-            }
-        }
-        if (otherObject.tag == "middle")
-        {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
-            {
-                attackedAlready = true;
-                health -= attackDamageMiddle;
-                Debug.Log("Health: " + health);
-            }
-        }
-        if (otherObject.tag == "low")
-        {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
-            {
-                attackedAlready = true;
-                health -= attackDamageLow;
+                health -= attackDamage;
                 Debug.Log("Health: " + health);
             }
         }
