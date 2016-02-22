@@ -56,12 +56,12 @@ public class comboListener : MonoBehaviour
     public AudioClip punchLow;
     AudioSource audio;              //Something that helps play audio
 
-    float hadoukenThreshold;        //Amount of buffer time between hadoukens
-    float tatsumakiThreshold;       //Amount of buffer time between tatsumakis
-    float whirlwindThreshold;       //Amount of buffer time between whirlwinds
-    float punchHighThreshold;
-    float punchMedThreshold;
-    float punchLowThreshold;
+    float hadoukenThreshold = 1f;        //Amount of buffer time between hadoukens
+    float tatsumakiThreshold = 1f;       //Amount of buffer time between tatsumakis
+    float whirlwindThreshold = 2f;       //Amount of buffer time between whirlwinds
+    public float punchHighThreshold = .5f;
+    public float punchMedThreshold = .5f;
+    public float punchLowThreshold = .5f;
 
     char[] comboHadouken;           //char array that stores input to combo
     char[] comboTatsumaki;          //char array that stores input to combo
@@ -129,12 +129,12 @@ public class comboListener : MonoBehaviour
         comboPunchMed = new char[2] { '4', '6' };
         comboPunchLow = new char[2] { '2', '7' };
 
-        hadoukenThreshold = 1f;
+        /*hadoukenThreshold = 1f;
         tatsumakiThreshold = 1f;
         whirlwindThreshold = 2f;
         punchHighThreshold = .1f;
         punchMedThreshold = .1f;
-        punchLowThreshold = .1f;
+        punchLowThreshold = .1f;*/
 
         //keyBufferSize = 8;       
         //comboTextLinger = 2;
