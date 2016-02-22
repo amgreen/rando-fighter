@@ -37,9 +37,30 @@ public class PlayerClass : MonoBehaviour {
         currentlyAttacking = true;
         myFist.SetActive(true);
         Debug.Log(executeAttack);
+<<<<<<< HEAD
 
         yield return new WaitForSeconds(attackTime);
         myFist.SetActive(false);
+=======
+        if (executeAttack == AttackType.High)
+        {
+            myFist.SetActive(true);
+            yield return new WaitForSeconds(attackTimeHigh);
+            myFist.SetActive(false);
+        }
+        if (executeAttack == AttackType.Middle)
+        {
+            middleFist.SetActive(true);
+            yield return new WaitForSeconds(attackTimeMiddle);
+            middleFist.SetActive(false);
+        }
+        if (executeAttack == AttackType.Low)
+        {
+            myFoot.SetActive(true);
+            yield return new WaitForSeconds(attackTimeLow);
+            myFoot.SetActive(false);
+        }      
+>>>>>>> parent of 6cb629e... Fixed Attacks
         currentlyAttacking = false;
         attackedAlready = false;
     }
@@ -53,9 +74,27 @@ public class PlayerClass : MonoBehaviour {
             if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking && !attackedAlready)
             {
                 attackedAlready = true;
+<<<<<<< HEAD
                 health -= attackDamage;
                 Debug.Log("Health: " + health);
             }
+=======
+                health -= attackDamageHigh;
+                Debug.Log("Health: " + health);
+            }
+        }
+        if (otherObject.tag == "middle")
+        {
+            attackedAlready = true;
+            health -= attackDamageMiddle;
+            Debug.Log("Health: " + health);
+        }
+        if (otherObject.tag == "low")
+        {
+            attackedAlready = true;
+            health -= attackDamageLow;
+            Debug.Log("Health: " + health);
+>>>>>>> parent of 6cb629e... Fixed Attacks
         }
 
     }
