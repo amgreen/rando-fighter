@@ -78,6 +78,8 @@ public class comboListener : MonoBehaviour
     float comboTimePunchLow;
     float timeLastCombo;            //Amount of time since last combo
 
+    public float comboTimeout = 1.5f;
+
     float comboTimeHadouken2;
     float comboTimeTatsumaki2;
     float comboTimeWhirlwind2;
@@ -250,6 +252,42 @@ public class comboListener : MonoBehaviour
             {
                 ButtonPressed bp = new ButtonPressed('7', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                ButtonPressed bp = new ButtonPressed('1', Time.time);
+                buttonPressedEnqueue2(buttonPressedQueue2, bp);
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                ButtonPressed bp = new ButtonPressed('2', Time.time);
+                buttonPressedEnqueue2(buttonPressedQueue2, bp);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                ButtonPressed bp = new ButtonPressed('3', Time.time);
+                buttonPressedEnqueue2(buttonPressedQueue2, bp);
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                ButtonPressed bp = new ButtonPressed('4', Time.time);
+                buttonPressedEnqueue2(buttonPressedQueue2, bp);
+            }
+            if (Input.GetKeyDown(inputMappings2[1]))
+            {
+                ButtonPressed bp = new ButtonPressed('5', Time.time);
+                buttonPressedEnqueue2(buttonPressedQueue2, bp);
+            }
+            if (Input.GetKeyDown(inputMappings2[2]))
+            {
+                ButtonPressed bp = new ButtonPressed('6', Time.time);
+                buttonPressedEnqueue2(buttonPressedQueue2, bp);
+            }
+            if (Input.GetKeyDown(inputMappings2[3]))
+            {
+                ButtonPressed bp = new ButtonPressed('7', Time.time);
+                buttonPressedEnqueue2(buttonPressedQueue2, bp);
             }
         }
         else if (layout == 3)
@@ -440,7 +478,7 @@ public class comboListener : MonoBehaviour
 
     public void buttonPressedEnqueue(Queue<ButtonPressed> q, ButtonPressed bp)
     {
-        while (q.Count > 0 && Time.time - q.Peek().TimeCreated > 2)
+        while (q.Count > 0 && Time.time - q.Peek().TimeCreated > comboTimeout)
         {
             //print("delete! There are " + q.Count + " buttons left.");
             q.Dequeue();
@@ -524,7 +562,7 @@ public class comboListener : MonoBehaviour
 
     public void buttonPressedEnqueue2(Queue<ButtonPressed> q, ButtonPressed bp)
     {
-        while (q.Count > 0 && Time.time - q.Peek().TimeCreated > 2)
+        while (q.Count > 0 && Time.time - q.Peek().TimeCreated > comboTimeout)
         {
             //print("delete! There are " + q.Count + " buttons left.");
             q.Dequeue();
@@ -660,7 +698,10 @@ public class comboListener : MonoBehaviour
             print("The cipher1 is: " + s1);
             print("The cipher2 is: " + s2);
         }
-        else {
+        else if (layout == 3)
+            print("The layout is 3");
+        else
+        {
             print("UH OH");
         }
     }
