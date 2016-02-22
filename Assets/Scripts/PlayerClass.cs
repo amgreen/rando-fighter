@@ -94,6 +94,9 @@ public class PlayerClass : MonoBehaviour {
             attackedAlready = true;
             health -= attackDamageLow;
             Debug.Log("Health: " + health);
+<<<<<<< HEAD
+>>>>>>> parent of 6cb629e... Fixed Attacks
+=======
 >>>>>>> parent of 6cb629e... Fixed Attacks
         }
 
