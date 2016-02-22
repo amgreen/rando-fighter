@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     private Vector2 movement;
     public bool inAir = false;
     public bool player1 = true;
+    public bool facingleft; 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -29,10 +30,12 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.position += Vector3.left * speed * Time.deltaTime;
+                facingleft = true;
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.position += Vector3.right * speed * Time.deltaTime;
+                facingleft = false;
             }
             if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -58,10 +61,12 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey(KeyCode.A))
             {
                 transform.position += Vector3.left * speed * Time.deltaTime;
+                facingleft = true;
             }
             if (Input.GetKey(KeyCode.D))
             {
                 transform.position += Vector3.right * speed * Time.deltaTime;
+                facingleft = false;
             }
             if (Input.GetKey(KeyCode.W))
             {
