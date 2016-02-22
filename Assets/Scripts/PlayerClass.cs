@@ -55,6 +55,7 @@ public class PlayerClass : MonoBehaviour {
         Debug.Log(executeAttack);
         if (executeAttack == AttackType.High)
         {
+
             myFist.SetActive(true);
             yield return new WaitForSeconds(attackTimeHigh);
             myFist.SetActive(false);
@@ -81,7 +82,7 @@ public class PlayerClass : MonoBehaviour {
         GameObject otherObject = collision.collider.gameObject;
         if (otherObject.tag == "high")
         {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking && !attackedAlready)
+            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
             {
                 attackedAlready = true;
                 health -= attackDamageHigh;
@@ -90,15 +91,21 @@ public class PlayerClass : MonoBehaviour {
         }
         if (otherObject.tag == "middle")
         {
-            attackedAlready = true;
-            health -= attackDamageMiddle;
-            Debug.Log("Health: " + health);
+            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
+            {
+                attackedAlready = true;
+                health -= attackDamageMiddle;
+                Debug.Log("Health: " + health);
+            }
         }
         if (otherObject.tag == "low")
         {
-            attackedAlready = true;
-            health -= attackDamageLow;
-            Debug.Log("Health: " + health);
+            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
+            {
+                attackedAlready = true;
+                health -= attackDamageLow;
+                Debug.Log("Health: " + health);
+            }
         }
 
     }
