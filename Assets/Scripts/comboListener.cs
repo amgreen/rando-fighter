@@ -215,6 +215,42 @@ public class comboListener : MonoBehaviour
                 ButtonPressed bp = new ButtonPressed('7', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
+
+            if (Input.GetKeyDown(inputMappings2[1]))
+            {
+                ButtonPressed bp = new ButtonPressed('1', Time.time);
+                buttonPressedEnqueue(buttonPressedQueue, bp);
+            }
+            if (Input.GetKeyDown(inputMappings2[2]))
+            {
+                ButtonPressed bp = new ButtonPressed('2', Time.time);
+                buttonPressedEnqueue(buttonPressedQueue, bp);
+            }
+            if (Input.GetKeyDown(inputMappings2[3]))
+            {
+                ButtonPressed bp = new ButtonPressed('3', Time.time);
+                buttonPressedEnqueue(buttonPressedQueue, bp);
+            }
+            if (Input.GetKeyDown(inputMappings2[4]))
+            {
+                ButtonPressed bp = new ButtonPressed('4', Time.time);
+                buttonPressedEnqueue(buttonPressedQueue, bp);
+            }
+            if (Input.GetKeyDown(inputMappings2[5]))
+            {
+                ButtonPressed bp = new ButtonPressed('5', Time.time);
+                buttonPressedEnqueue(buttonPressedQueue, bp);
+            }
+            if (Input.GetKeyDown(inputMappings2[6]))
+            {
+                ButtonPressed bp = new ButtonPressed('6', Time.time);
+                buttonPressedEnqueue(buttonPressedQueue, bp);
+            }
+            if (Input.GetKeyDown(inputMappings2[7]))
+            {
+                ButtonPressed bp = new ButtonPressed('7', Time.time);
+                buttonPressedEnqueue(buttonPressedQueue, bp);
+            }
         }
         else if (layout == 2)
         {
