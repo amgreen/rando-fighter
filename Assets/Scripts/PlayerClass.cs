@@ -27,6 +27,8 @@ public class PlayerClass : MonoBehaviour {
     public GameObject middleFist;
     public GameObject myFoot;
 
+  
+
     // Use this for initialization
     void Start () {
         initialHealth = health;

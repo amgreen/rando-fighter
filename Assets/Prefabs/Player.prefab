@@ -33,6 +33,7 @@ GameObject:
   - 114: {fileID: 11403818}
   - 82: {fileID: 8274580}
   - 114: {fileID: 11441630}
+  - 95: {fileID: 9556632}
   m_Layer: 5
   m_Name: Player
   m_TagString: Player
@@ -194,6 +195,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &9556632
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179232}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 397f29deff0db934aa770daa76c2ddfa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11403818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,11 +302,16 @@ MonoBehaviour:
   punchHigh: {fileID: 8300000, guid: f9da48c696084424783ead66325641e9, type: 3}
   punchMed: {fileID: 8300000, guid: 1f6c1308afbf7e24f8ddf7bc214f7e1b, type: 3}
   punchLow: {fileID: 8300000, guid: c23a0afe14121794aabfcb4753980a49, type: 3}
-  punchHighBool: 0
-  punchMedBool: 0
-  punchLowBool: 0
-  hadoukenBool: 0
-  whirlwindBool: 0
+  punchHighBool1: 0
+  punchMedBool1: 0
+  punchLowBool1: 0
+  hadoukenBool1: 0
+  whirlwindBool1: 0
+  punchHighBool2: 0
+  punchMedBool2: 0
+  punchLowBool2: 0
+  hadoukenBool2: 0
+  whirlwindBool2: 0
 --- !u!114 &11466808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -470,7 +493,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 397f29deff0db934aa770daa76c2ddfa, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 179232}
