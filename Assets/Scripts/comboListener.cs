@@ -48,12 +48,12 @@ public class comboListener : MonoBehaviour
     public int keyBufferSize = 8;   //Determines how many key inputs to store in the queue. A larger number will slow performance.
     int comboTextLinger = 2;        //Determines how long your combo text will stay on screen before disappearing
 
-    public AudioClip hadouken2;     //Pointer to hadouken2.wav
-    public AudioClip dodge;         //Pointer to dodge.wav
-    public AudioClip whirlwind;     //Pointer to whirlwind.wav
-    public AudioClip punchHigh;
-    public AudioClip punchMed;
-    public AudioClip punchLow;
+    public AudioClip hadoukenSound;     //Pointer to hadouken2.wav
+    public AudioClip dodgeSound;         //Pointer to dodge.wav
+    public AudioClip whirlwindSound;     //Pointer to whirlwind.wav
+    public AudioClip punchHighSound;
+    public AudioClip punchMedSound;
+    public AudioClip punchLowSound;
     AudioSource audio;              //Something that helps play audio
 
     float hadoukenThreshold = 1f;        //Amount of buffer time between hadoukens
@@ -103,14 +103,20 @@ public class comboListener : MonoBehaviour
     public bool punchHighBool1 = false;
     public bool punchMedBool1 = false;
     public bool punchLowBool1 = false;
-    public bool hadoukenBool1 = false;
-    public bool whirlwindBool1 = false;
+    public bool punchHighComboBool1 = false;
+    public bool punchMedComboBool1 = false;
+    public bool punchLowComboBool1 = false;
+    public bool dashLeftBool1 = false;
+    public bool dashRightBool1 = false;
 
     public bool punchHighBool2 = false;
     public bool punchMedBool2 = false;
     public bool punchLowBool2 = false;
-    public bool hadoukenBool2 = false;
-    public bool whirlwindBool2 = false;
+    public bool punchHighComboBool2 = false;
+    public bool punchMedComboBool2 = false;
+    public bool punchLowComboBool2 = false;
+    public bool dashLeftBool2 = false;
+    public bool dashRightBool2 = false;
 
     void Start()
     {
@@ -158,18 +164,31 @@ public class comboListener : MonoBehaviour
         punchHighBool1 = false;
         punchMedBool1 = false;
         punchLowBool1 = false;
-        hadoukenBool1 = false;
-        whirlwindBool1 = false;
+        punchHighComboBool1 = false;
+        punchMedComboBool1 = false;
+        punchLowComboBool1 = false;
+        dashLeftBool1 = false;
+        dashRightBool1 = false;
 
         punchHighBool2 = false;
         punchMedBool2 = false;
         punchLowBool2 = false;
-        hadoukenBool2 = false;
-        whirlwindBool2 = false;
+        punchHighComboBool2 = false;
+        punchMedComboBool2 = false;
+        punchLowComboBool2 = false;
+        dashLeftBool2 = false;
+        dashRightBool2 = false;
 
         //layout = 3;
-        print("The layout is: " + layout);
-        initializeMappings(layout);
+        if (layout == 2) {
+            print("The layout is random.");
+            initializeMappings(layout);
+        }
+        else if (layout == 3)
+            print("The layout is fixed.");
+        else {
+            print("The layout is: " + layout);
+        }
     }
 
     // Update is called once per frame
@@ -178,226 +197,163 @@ public class comboListener : MonoBehaviour
         //if (Time.time - timeLastCombo > comboTextLinger) comboOutput.text = "(Nothing!)";
         //if (Time.time - timeLastCombo2 > comboTextLinger) comboOutput2.text = "(Nothing!)";
 
-        if (layout == 1)
+        if (layout == 2)
         {
-            if (Input.GetKeyDown(inputMappings1[1]))
+            if (!gameObject.GetComponent<PlayerController>().player2)
             {
-                ButtonPressed bp = new ButtonPressed('1', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings1[2]))
-            {
-                ButtonPressed bp = new ButtonPressed('2', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings1[3]))
-            {
-                ButtonPressed bp = new ButtonPressed('3', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings1[4]))
-            {
-                ButtonPressed bp = new ButtonPressed('4', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings1[5]))
-            {
-                ButtonPressed bp = new ButtonPressed('5', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings1[6]))
-            {
-                ButtonPressed bp = new ButtonPressed('6', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings1[7]))
-            {
-                ButtonPressed bp = new ButtonPressed('7', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    ButtonPressed bp = new ButtonPressed('1', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    ButtonPressed bp = new ButtonPressed('2', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    ButtonPressed bp = new ButtonPressed('3', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    ButtonPressed bp = new ButtonPressed('4', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(inputMappings1[1]))
+                {
+                    ButtonPressed bp = new ButtonPressed('5', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(inputMappings1[2]))
+                {
+                    ButtonPressed bp = new ButtonPressed('6', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(inputMappings1[3]))
+                {
+                    ButtonPressed bp = new ButtonPressed('7', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
             }
 
-            if (Input.GetKeyDown(inputMappings2[1]))
+            else
             {
-                ButtonPressed bp = new ButtonPressed('1', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings2[2]))
-            {
-                ButtonPressed bp = new ButtonPressed('2', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings2[3]))
-            {
-                ButtonPressed bp = new ButtonPressed('3', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings2[4]))
-            {
-                ButtonPressed bp = new ButtonPressed('4', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings2[5]))
-            {
-                ButtonPressed bp = new ButtonPressed('5', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings2[6]))
-            {
-                ButtonPressed bp = new ButtonPressed('6', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings2[7]))
-            {
-                ButtonPressed bp = new ButtonPressed('7', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-        }
-        else if (layout == 2)
-        {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                ButtonPressed bp = new ButtonPressed('1', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                ButtonPressed bp = new ButtonPressed('2', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                ButtonPressed bp = new ButtonPressed('3', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                ButtonPressed bp = new ButtonPressed('4', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings1[1]))
-            {
-                ButtonPressed bp = new ButtonPressed('5', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings1[2]))
-            {
-                ButtonPressed bp = new ButtonPressed('6', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(inputMappings1[3]))
-            {
-                ButtonPressed bp = new ButtonPressed('7', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                ButtonPressed bp = new ButtonPressed('1', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                ButtonPressed bp = new ButtonPressed('2', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                ButtonPressed bp = new ButtonPressed('3', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                ButtonPressed bp = new ButtonPressed('4', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(inputMappings2[1]))
-            {
-                ButtonPressed bp = new ButtonPressed('5', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(inputMappings2[2]))
-            {
-                ButtonPressed bp = new ButtonPressed('6', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(inputMappings2[3]))
-            {
-                ButtonPressed bp = new ButtonPressed('7', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    ButtonPressed bp = new ButtonPressed('1', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    ButtonPressed bp = new ButtonPressed('2', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    ButtonPressed bp = new ButtonPressed('3', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    ButtonPressed bp = new ButtonPressed('4', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(inputMappings2[1]))
+                {
+                    ButtonPressed bp = new ButtonPressed('5', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(inputMappings2[2]))
+                {
+                    ButtonPressed bp = new ButtonPressed('6', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(inputMappings2[3]))
+                {
+                    ButtonPressed bp = new ButtonPressed('7', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
             }
         }
         else if (layout == 3)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (!gameObject.GetComponent<PlayerController>().player2)
             {
-                ButtonPressed bp = new ButtonPressed('1', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    ButtonPressed bp = new ButtonPressed('1', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    ButtonPressed bp = new ButtonPressed('2', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    ButtonPressed bp = new ButtonPressed('3', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    ButtonPressed bp = new ButtonPressed('4', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.T))
+                {
+                    ButtonPressed bp = new ButtonPressed('5', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.Y))
+                {
+                    ButtonPressed bp = new ButtonPressed('6', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.U))
+                {
+                    ButtonPressed bp = new ButtonPressed('7', Time.time);
+                    buttonPressedEnqueue(buttonPressedQueue, bp);
+                }
             }
-            if (Input.GetKeyDown(KeyCode.S))
+            else
             {
-                ButtonPressed bp = new ButtonPressed('2', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                ButtonPressed bp = new ButtonPressed('3', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                ButtonPressed bp = new ButtonPressed('4', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                ButtonPressed bp = new ButtonPressed('5', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.Y))
-            {
-                ButtonPressed bp = new ButtonPressed('6', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                ButtonPressed bp = new ButtonPressed('7', Time.time);
-                buttonPressedEnqueue(buttonPressedQueue, bp);
-            }
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                ButtonPressed bp = new ButtonPressed('1', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                ButtonPressed bp = new ButtonPressed('2', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                ButtonPressed bp = new ButtonPressed('3', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                ButtonPressed bp = new ButtonPressed('4', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad1))
-            {
-                ButtonPressed bp = new ButtonPressed('5', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad2))
-            {
-                ButtonPressed bp = new ButtonPressed('6', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad3))
-            {
-                ButtonPressed bp = new ButtonPressed('7', Time.time);
-                buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    ButtonPressed bp = new ButtonPressed('1', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    ButtonPressed bp = new ButtonPressed('2', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    ButtonPressed bp = new ButtonPressed('3', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    ButtonPressed bp = new ButtonPressed('4', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad1))
+                {
+                    ButtonPressed bp = new ButtonPressed('5', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad2))
+                {
+                    ButtonPressed bp = new ButtonPressed('6', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad3))
+                {
+                    ButtonPressed bp = new ButtonPressed('7', Time.time);
+                    buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                }
             }
         }
         else print("WTF");
@@ -549,8 +505,7 @@ public class comboListener : MonoBehaviour
         {
             comboTimeHadouken = Time.time;
             timeLastCombo = Time.time;
-            audio.PlayOneShot(hadouken2);
-            hadoukenBool1 = true;
+            //audio.PlayOneShot(hadoukenSound);
             q.Clear();
         }
         /*if (containsCombo(q2, comboTatsumaki, 0) && Time.time - comboTimeTatsumaki > tatsumakiThreshold)
@@ -565,15 +520,14 @@ public class comboListener : MonoBehaviour
         {
             comboTimeWhirlwind = Time.time;
             timeLastCombo = Time.time;
-            audio.PlayOneShot(whirlwind);
-            whirlwindBool1 = true;
+            //audio.PlayOneShot(whirlwindSound);
             q.Clear();
         }
         if (containsCombo(qPunchHigh, comboPunchHigh, 0) && Time.time - comboTimePunchHigh > punchHighThreshold)
         {
             comboTimePunchHigh = Time.time;
             timeLastCombo = Time.time;
-            audio.PlayOneShot(punchHigh);
+            //audio.PlayOneShot(punchHighSound);
             punchHighBool1 = true;
             q.Clear();
         }
@@ -581,7 +535,7 @@ public class comboListener : MonoBehaviour
         {
             comboTimePunchMed = Time.time;
             timeLastCombo = Time.time;
-            audio.PlayOneShot(punchMed);
+            //audio.PlayOneShot(punchMedSound);
             punchMedBool1 = true;
             q.Clear();
         }
@@ -589,7 +543,7 @@ public class comboListener : MonoBehaviour
         {
             comboTimePunchLow = Time.time;
             timeLastCombo = Time.time;
-            audio.PlayOneShot(punchLow);
+            //audio.PlayOneShot(punchLowSound);
             punchLowBool1 = true;
             q.Clear();
         }
@@ -633,8 +587,7 @@ public class comboListener : MonoBehaviour
         {
             comboTimeHadouken2 = Time.time;
             timeLastCombo2 = Time.time;
-            audio.PlayOneShot(hadouken2);
-            hadoukenBool2 = true;
+            //audio.PlayOneShot(hadoukenSound);
             q.Clear();
         }
         /*if (containsCombo(q2, comboTatsumaki, 0) && Time.time - comboTimeTatsumaki2 > tatsumakiThreshold)
@@ -649,15 +602,14 @@ public class comboListener : MonoBehaviour
         {
             comboTimeWhirlwind2 = Time.time;
             timeLastCombo2 = Time.time;
-            audio.PlayOneShot(whirlwind);
-            whirlwindBool2 = true;
+            //audio.PlayOneShot(whirlwindSound);
             q.Clear();
         }
         if (containsCombo(qPunchHigh, comboPunchHigh, 0) && Time.time - comboTimePunchHigh2 > punchHighThreshold)
         {
             comboTimePunchHigh2 = Time.time;
             timeLastCombo2 = Time.time;
-            audio.PlayOneShot(punchHigh);
+            //audio.PlayOneShot(punchHighSound);
             punchHighBool2 = true;
             q.Clear();
         }
@@ -665,7 +617,7 @@ public class comboListener : MonoBehaviour
         {
             comboTimePunchMed2 = Time.time;
             timeLastCombo2 = Time.time;
-            audio.PlayOneShot(punchMed);
+            //audio.PlayOneShot(punchMedSound);
             punchMedBool2 = true;
             q.Clear();
         }
@@ -673,7 +625,7 @@ public class comboListener : MonoBehaviour
         {
             comboTimePunchLow2 = Time.time;
             timeLastCombo2 = Time.time;
-            audio.PlayOneShot(punchLow);
+            //audio.PlayOneShot(punchLowSound);
             punchLowBool2 = true;
             q.Clear();
         }
@@ -682,60 +634,38 @@ public class comboListener : MonoBehaviour
 
     private void initializeMappings(int layout)
     {
-        if (layout == 1)
-        {
-            List<int> l = GenerateRandom(15);
-            string s1 = "";
-            string s2 = "";
-            randomIntArray = l.ToArray();
-            KeyCode[] charArray1 = { KeyCode.Q, KeyCode.A, KeyCode.Z,
-                                    KeyCode.W, KeyCode.S, KeyCode.X,
-                                    KeyCode.E, KeyCode.D, KeyCode.C,
-                                    KeyCode.R, KeyCode.F, KeyCode.V,
-                                    KeyCode.T, KeyCode.G, KeyCode.B};
-            KeyCode[] charArray2 = { KeyCode.RightBracket, KeyCode.DoubleQuote, KeyCode.Question,
-                                    KeyCode.LeftBracket, KeyCode.Semicolon, KeyCode.Period,
-                                    KeyCode.P, KeyCode.L, KeyCode.Comma,
-                                    KeyCode.O, KeyCode.K, KeyCode.M,
-                                    KeyCode.I, KeyCode.J, KeyCode.N};
-            /*KeyCode[] charArray2 = {    KeyCode.Keypad1, KeyCode.Keypad2, KeyCode.Keypad3,
-                                        KeyCode.Keypad4, KeyCode.Keypad5, KeyCode.Keypad6,
-                                        KeyCode.Keypad7, KeyCode.Keypad8, KeyCode.Keypad9};*/
-            for (int i = 0; i < randomIntArray.Length; i++)
-            {
-                inputMappings1.Add(randomIntArray[i], charArray1[i]);
-                s1 += randomIntArray[i] + "" + charArray1[i] + "  ";
-
-                inputMappings2.Add(randomIntArray[i], charArray2[i]);
-                s2 += randomIntArray[i] + "" + charArray2[i] + "  ";
-            }
-            print("The cipher1 is: " + s1);
-            print("The cipher2 is: " + s2);
-        }
-        else if (layout == 2)
+        if (layout == 2)
         {
             List<int> l = GenerateRandom(6);
             string s = "";
             randomIntArray = l.ToArray();
-            KeyCode[] charArray1 = { KeyCode.T, KeyCode.Y, KeyCode.U,
-                                    KeyCode.G, KeyCode.H, KeyCode.J};
-            KeyCode[] charArray2 = {    KeyCode.Keypad1, KeyCode.Keypad2, KeyCode.Keypad3,
-                                        KeyCode.Keypad4, KeyCode.Keypad5, KeyCode.Keypad6 };
-            string s1 = "";
-            string s2 = "";
-            for (int i = 0; i < randomIntArray.Length; i++)
+            
+            if (!gameObject.GetComponent<PlayerController>().player2)
             {
-                inputMappings1.Add(randomIntArray[i], charArray1[i]);
-                s1 += randomIntArray[i] + "" + charArray1[i] + "  ";
-
-                inputMappings2.Add(randomIntArray[i], charArray2[i]);
-                s2 += randomIntArray[i] + "" + charArray2[i] + "  ";
+                KeyCode[] charArray1 = { KeyCode.T, KeyCode.Y, KeyCode.U,
+                                    KeyCode.G, KeyCode.H, KeyCode.J};
+                for (int i = 0; i < randomIntArray.Length; i++)
+                {
+                    inputMappings1.Add(randomIntArray[i], charArray1[i]);
+                    s += randomIntArray[i] + "" + charArray1[i] + "  ";
+                }
+                print("The cipher1 is: " + s);
+                
             }
-            print("The cipher1 is: " + s1);
-            print("The cipher2 is: " + s2);
+            else
+            {
+                KeyCode[] charArray2 = {    KeyCode.Keypad1, KeyCode.Keypad2, KeyCode.Keypad3,
+                                        KeyCode.Keypad4, KeyCode.Keypad5, KeyCode.Keypad6 };
+                for (int i = 0; i < randomIntArray.Length; i++)
+                {
+                    inputMappings2.Add(randomIntArray[i], charArray2[i]);
+                    s += randomIntArray[i] + "" + charArray2[i] + "  ";
+                }
+                print("The cipher2 is: " + s);
+            }
         }
         else if (layout == 3)
-            print("The layout is 3");
+            print("The layout is 3. But this shouldn't happen.");
         else
         {
             print("UH OH");
