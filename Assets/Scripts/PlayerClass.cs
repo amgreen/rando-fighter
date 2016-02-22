@@ -8,15 +8,24 @@ public class PlayerClass : MonoBehaviour {
     public Image myHealthBar;
     private float initialHealth;
 
-    private enum AttackType {Punch, Kick, Counter};
+    private enum AttackType {High, Middle, Low, Projectile};
 
-    public float attackTime = 2.0f;
-    public float attackDamage = 10.0f;
+    public float attackTimeHigh = 1.0f;
+    public float attackTimeMiddle = 1.0f;
+    public float attackTimeLow = 1.0f;
+    public float attackTimeProjectile = 1.0f;
+    
+    public float attackDamageHigh = 10.0f;
+    public float attackDamageMiddle = 10.0f;
+    public float attackDamageLow = 10.0f;
+    public float attackDamageProjectile = 10.0f;
 
     public bool currentlyAttacking = false;
     public bool attackedAlready = false;
 
     public GameObject myFist;
+    public GameObject middleFist;
+    public GameObject myFoot;
 
     // Use this for initialization
     void Start () {
@@ -25,9 +34,17 @@ public class PlayerClass : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetButtonDown("Fire1"))
+	    if (Input.GetKeyDown(KeyCode.U))
         {
-            StartCoroutine(Attack(AttackType.Punch));
+            StartCoroutine(Attack(AttackType.High));
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            StartCoroutine(Attack(AttackType.Middle));
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            StartCoroutine(Attack(AttackType.Low));
         }
         myHealthBar.fillAmount = health / initialHealth;
 	}
@@ -35,11 +52,10 @@ public class PlayerClass : MonoBehaviour {
     IEnumerator Attack(AttackType executeAttack)
     {
         currentlyAttacking = true;
-        myFist.SetActive(true);
         Debug.Log(executeAttack);
-
         if (executeAttack == AttackType.High)
         {
+
             myFist.SetActive(true);
             yield return new WaitForSeconds(attackTimeHigh);
             myFist.SetActive(false);
@@ -66,30 +82,30 @@ public class PlayerClass : MonoBehaviour {
         GameObject otherObject = collision.collider.gameObject;
         if (otherObject.tag == "high")
         {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking && !attackedAlready)
+            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
             {
                 attackedAlready = true;
-
-                health -= attackDamage;
-                Debug.Log("Health: " + health);
-            }
-
                 health -= attackDamageHigh;
                 Debug.Log("Health: " + health);
             }
         }
         if (otherObject.tag == "middle")
         {
-            attackedAlready = true;
-            health -= attackDamageMiddle;
-            Debug.Log("Health: " + health);
+            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
+            {
+                attackedAlready = true;
+                health -= attackDamageMiddle;
+                Debug.Log("Health: " + health);
+            }
         }
         if (otherObject.tag == "low")
         {
-            attackedAlready = true;
-            health -= attackDamageLow;
-            Debug.Log("Health: " + health);
-
+            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
+            {
+                attackedAlready = true;
+                health -= attackDamageLow;
+                Debug.Log("Health: " + health);
+            }
         }
 
     }
