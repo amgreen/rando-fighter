@@ -37,11 +37,7 @@ public class PlayerClass : MonoBehaviour {
         currentlyAttacking = true;
         myFist.SetActive(true);
         Debug.Log(executeAttack);
-<<<<<<< HEAD
 
-        yield return new WaitForSeconds(attackTime);
-        myFist.SetActive(false);
-=======
         if (executeAttack == AttackType.High)
         {
             myFist.SetActive(true);
@@ -60,7 +56,6 @@ public class PlayerClass : MonoBehaviour {
             yield return new WaitForSeconds(attackTimeLow);
             myFoot.SetActive(false);
         }      
->>>>>>> parent of 6cb629e... Fixed Attacks
         currentlyAttacking = false;
         attackedAlready = false;
     }
@@ -74,11 +69,11 @@ public class PlayerClass : MonoBehaviour {
             if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking && !attackedAlready)
             {
                 attackedAlready = true;
-<<<<<<< HEAD
+
                 health -= attackDamage;
                 Debug.Log("Health: " + health);
             }
-=======
+
                 health -= attackDamageHigh;
                 Debug.Log("Health: " + health);
             }
@@ -94,10 +89,7 @@ public class PlayerClass : MonoBehaviour {
             attackedAlready = true;
             health -= attackDamageLow;
             Debug.Log("Health: " + health);
-<<<<<<< HEAD
->>>>>>> parent of 6cb629e... Fixed Attacks
-=======
->>>>>>> parent of 6cb629e... Fixed Attacks
+
         }
 
     }
