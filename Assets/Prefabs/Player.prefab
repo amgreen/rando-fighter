@@ -10,6 +10,7 @@ GameObject:
   - 224: {fileID: 22462280}
   - 222: {fileID: 22291212}
   - 114: {fileID: 11424420}
+  - 61: {fileID: 6168626}
   m_Layer: 5
   m_Name: fistlow
   m_TagString: middle
@@ -51,6 +52,7 @@ GameObject:
   - 224: {fileID: 22478406}
   - 222: {fileID: 22243962}
   - 114: {fileID: 11466808}
+  - 61: {fileID: 6119914}
   m_Layer: 5
   m_Name: foot
   m_TagString: low
@@ -93,6 +95,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &6119914
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196036}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 15, y: 10}
 --- !u!61 &6130122
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -113,6 +129,20 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199406}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 15, y: 10}
+--- !u!61 &6168626
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137904}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -248,7 +278,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -275,7 +305,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -299,9 +329,9 @@ MonoBehaviour:
   hadouken2: {fileID: 8300000, guid: d43c80e4fe54f8e4dad1397b876ef1cc, type: 3}
   dodge: {fileID: 0}
   whirlwind: {fileID: 8300000, guid: e86b6df43d7665f469eb817e3427c66b, type: 3}
-  punchHigh: {fileID: 8300000, guid: f9da48c696084424783ead66325641e9, type: 3}
-  punchMed: {fileID: 8300000, guid: 1f6c1308afbf7e24f8ddf7bc214f7e1b, type: 3}
-  punchLow: {fileID: 8300000, guid: c23a0afe14121794aabfcb4753980a49, type: 3}
+  punchHigh: {fileID: 8300000, guid: 97e741314e82a6b4d8f09a3874098bb7, type: 3}
+  punchMed: {fileID: 8300000, guid: 9a16f1e00bdbfb340a10fc4aa459bc92, type: 3}
+  punchLow: {fileID: 8300000, guid: 4f8fc6ea296d7534584c65c21f8020c4, type: 3}
   punchHighBool1: 0
   punchMedBool1: 0
   punchLowBool1: 0
@@ -331,7 +361,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -498,6 +528,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 397f29deff0db934aa770daa76c2ddfa, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 179232}

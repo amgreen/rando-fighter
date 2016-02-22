@@ -72,7 +72,11 @@ public class PlayerClass : MonoBehaviour {
                 gameObject.GetComponent<comboListener>().punchLowBool2 = false;
             }
         }
+
         myHealthBar.fillAmount = health / initialHealth;
+		if (health <= 0) {
+			Destroy (gameObject);
+		}
 	}
 
     IEnumerator Attack(AttackType executeAttack)
@@ -83,18 +87,21 @@ public class PlayerClass : MonoBehaviour {
         {
 
             myFist.SetActive(true);
+			gameObject.GetComponent<Animator> ().SetTrigger ("highAtk");
             yield return new WaitForSeconds(attackTimeHigh);
             myFist.SetActive(false);
         }
         if (executeAttack == AttackType.Middle)
         {
             middleFist.SetActive(true);
+			gameObject.GetComponent<Animator> ().SetTrigger ("midAtk");
             yield return new WaitForSeconds(attackTimeMiddle);
             middleFist.SetActive(false);
         }
         if (executeAttack == AttackType.Low)
         {
             myFoot.SetActive(true);
+			gameObject.GetComponent<Animator> ().SetTrigger ("lowAtk");
             yield return new WaitForSeconds(attackTimeLow);
             myFoot.SetActive(false);
         }      
@@ -114,6 +121,7 @@ public class PlayerClass : MonoBehaviour {
                 health -= attackDamageHigh;
                 Debug.Log("Health: " + health);
             }
+            gameObject.GetComponent<Animator>().SetTrigger("playerHit");
         }
         if (otherObject.tag == "middle")
         {
@@ -122,6 +130,7 @@ public class PlayerClass : MonoBehaviour {
                 attackedAlready = true;
                 health -= attackDamageMiddle;
                 Debug.Log("Health: " + health);
+                gameObject.GetComponent<Animator>().SetTrigger("playerHit");
             }
         }
         if (otherObject.tag == "low")
@@ -131,6 +140,7 @@ public class PlayerClass : MonoBehaviour {
                 attackedAlready = true;
                 health -= attackDamageLow;
                 Debug.Log("Health: " + health);
+                gameObject.GetComponent<Animator>().SetTrigger("playerHit");
             }
         }
 

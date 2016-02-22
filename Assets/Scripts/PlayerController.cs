@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
 
 
         inAir = !gameObject.GetComponent<Collider2D>().IsTouching(ground.GetComponent<Collider2D>());
+        gameObject.GetComponent<Animator>().SetBool("inAir",inAir);
         if (player2)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour {
                     gameObject.transform.Rotate(0, 180, 0);
                 }
                 facingleft = true;
+                gameObject.GetComponent<Animator>().SetTrigger("walking");
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour {
                     gameObject.transform.Rotate(0, 180, 0);
                 }
                 facingleft = false;
+                gameObject.GetComponent<Animator>().SetTrigger("walking");
             }
             if (Input.GetKey(KeyCode.UpArrow))
             {
@@ -74,6 +77,8 @@ public class PlayerController : MonoBehaviour {
                     gameObject.transform.Rotate(0, 180, 0);
                 }
                 facingleft = true;
+                gameObject.GetComponent<Animator>().SetTrigger("walking");
+
             }
             if (Input.GetKey(KeyCode.D))
             {
@@ -83,6 +88,8 @@ public class PlayerController : MonoBehaviour {
                     gameObject.transform.Rotate(0, 180, 0);
                 }
                 facingleft = false;
+                gameObject.GetComponent<Animator>().SetTrigger("walking");
+
             }
             if (Input.GetKey(KeyCode.W))
             {
