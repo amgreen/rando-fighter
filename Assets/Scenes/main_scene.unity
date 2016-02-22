@@ -345,7 +345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61c91d01029ee940b1ccb18dde3d70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  border: {fileID: 798751137}
 --- !u!61 &798751140
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -571,6 +570,10 @@ Prefab:
       propertyPath: myHealthBar
       value: 
       objectReference: {fileID: 212648990}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: jumpSpeed
+      value: 10000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
   m_IsPrefabParent: 0
