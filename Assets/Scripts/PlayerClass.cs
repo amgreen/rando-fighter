@@ -77,7 +77,10 @@ public class PlayerClass : MonoBehaviour {
 		if (health <= 0) {
 			Destroy (gameObject);
 		}
-	}
+
+        myHealthBar.transform.FindChild("Pic").gameObject.GetComponent<Image>().sprite = gameObject.GetComponent<Image>().sprite;
+        myHealthBar.transform.FindChild("Pic").gameObject.GetComponent<Image>().color = gameObject.GetComponent<Image>().color;
+    }
 
     IEnumerator Attack(AttackType executeAttack)
     {
