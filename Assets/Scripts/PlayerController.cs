@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb2d;
     private Vector2 movement;
     public bool inAir = false;
-    public bool player1 = true;
+    public bool player2 = true;
     public bool facingleft = true; 
     void Start()
     {
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 
 
         inAir = !gameObject.GetComponent<Collider2D>().IsTouching(ground.GetComponent<Collider2D>());
-        if (player1)
+        if (player2)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {

@@ -34,17 +34,20 @@ public class PlayerClass : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.U))
+	    if (gameObject.GetComponent<comboListener>().punchHighBool)
         {
             StartCoroutine(Attack(AttackType.High));
+            gameObject.GetComponent<comboListener>().punchHighBool = false;
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (gameObject.GetComponent<comboListener>().punchMedBool)
         {
             StartCoroutine(Attack(AttackType.Middle));
+            gameObject.GetComponent<comboListener>().punchMedBool = false;
         }
-        if (Input.GetKeyDown(KeyCode.O))
+        if (gameObject.GetComponent<comboListener>().punchLowBool)
         {
             StartCoroutine(Attack(AttackType.Low));
+            gameObject.GetComponent<comboListener>().punchLowBool = false;
         }
         myHealthBar.fillAmount = health / initialHealth;
 	}
