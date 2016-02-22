@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject ground;
     public float speed;
     public float jumpSpeed;
+    public float dashSpeed;
 
     private Rigidbody2D rb2d;
     private Vector2 movement;
@@ -28,6 +29,18 @@ public class PlayerController : MonoBehaviour {
         gameObject.GetComponent<Animator>().SetBool("inAir",inAir);
         if (player2)
         {
+
+            //quick dash
+            if (gameObject.GetComponent<comboListener>().dashLeftBool2)
+            {
+                transform.position += Vector3.left * dashSpeed * Time.deltaTime;
+            }
+            if (gameObject.GetComponent<comboListener>().dashRightBool2)
+            {
+                transform.position += Vector3.right * dashSpeed * Time.deltaTime;
+            }
+
+
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.position += Vector3.left * speed * Time.deltaTime;
@@ -69,6 +82,15 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
+            //quick dash
+            if (gameObject.GetComponent<comboListener>().dashLeftBool1)
+            {
+                transform.position += Vector3.left * dashSpeed * Time.deltaTime;
+            }
+            if (gameObject.GetComponent<comboListener>().dashRightBool1)
+            {
+                transform.position += Vector3.right * dashSpeed * Time.deltaTime;
+            }
             if (Input.GetKey(KeyCode.A))
             {
                 transform.position += Vector3.left * speed * Time.deltaTime;
