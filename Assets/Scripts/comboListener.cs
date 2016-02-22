@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Linq;
 
 [RequireComponent(typeof(AudioSource))]
-public class keyListener : MonoBehaviour
+public class comboListener : MonoBehaviour
 {
     static System.Random random = new System.Random();      //Important for randomizing
 
@@ -47,10 +47,6 @@ public class keyListener : MonoBehaviour
     */
     public int keyBufferSize = 8;   //Determines how many key inputs to store in the queue. A larger number will slow performance.
     int comboTextLinger = 2;        //Determines how long your combo text will stay on screen before disappearing
-    public Text keyInput;           //Pointer to text boxes
-    public Text comboOutput;        //Pointer to text boxes
-    public Text keyInput2;
-    public Text comboOutput2;
 
     public AudioClip hadouken2;     //Pointer to hadouken2.wav
     public AudioClip dodge;         //Pointer to dodge.wav
@@ -91,16 +87,22 @@ public class keyListener : MonoBehaviour
     float timeLastCombo2;
     //char lastInput;                 //Stores what was last pressed so we don't get repeats  DEPRECIATED
 
-    
+
     int[] randomIntArray;           //Random int array that determines which layout
 
     ButtonPressed bpInput;          //Unimportant placeholder for ButtonPressed Object
-    
+
     Queue<ButtonPressed> buttonPressedQueue = new Queue<ButtonPressed>();   //The queue used to store the input buffer
     Queue<ButtonPressed> buttonPressedQueue2 = new Queue<ButtonPressed>();
 
     Dictionary<int, KeyCode> inputMappings1 = new Dictionary<int, KeyCode>();    //Dictionary used for randomizing input
     Dictionary<int, KeyCode> inputMappings2 = new Dictionary<int, KeyCode>();
+
+    public bool punchHighBool = false;
+    public bool punchMedBool = false;
+    public bool punchLowBool = false;
+    public bool hadoukenBool = false;
+    public bool whirlwindBool = false;
 
     void Start()
     {
@@ -115,7 +117,7 @@ public class keyListener : MonoBehaviour
         comboHadouken = new char[3] { '2', '4', '5' };
         comboTatsumaki = new char[3] { '2', '3', '7' };
         comboWhirlwind = new char[3] { '5', '6', '7' };
-        comboPunchHigh = new char[2] { '3', '5'};
+        comboPunchHigh = new char[2] { '3', '5' };
         comboPunchMed = new char[2] { '4', '6' };
         comboPunchLow = new char[2] { '2', '7' };
 
@@ -145,58 +147,57 @@ public class keyListener : MonoBehaviour
         comboTimePunchLow2 = 0f;
         audio = GetComponent<AudioSource>();
 
+        punchHighBool = false;
+        punchMedBool = false;
+        punchLowBool = false;
+        hadoukenBool = false;
+        whirlwindBool = false;
+
         //layout = 3;
-        print("The layout is: "+layout);
+        print("The layout is: " + layout);
         initializeMappings(layout);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - timeLastCombo > comboTextLinger) comboOutput.text = "(Nothing!)";
-        if (Time.time - timeLastCombo2 > comboTextLinger) comboOutput2.text = "(Nothing!)";
+        //if (Time.time - timeLastCombo > comboTextLinger) comboOutput.text = "(Nothing!)";
+        //if (Time.time - timeLastCombo2 > comboTextLinger) comboOutput2.text = "(Nothing!)";
 
         if (layout == 1)
         {
             if (Input.GetKeyDown(inputMappings1[1]))
             {
-                keyInput.text = "Up arrow";
                 ButtonPressed bp = new ButtonPressed('1', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(inputMappings1[2]))
             {
-                keyInput.text = "Down arrow";
                 ButtonPressed bp = new ButtonPressed('2', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(inputMappings1[3]))
             {
-                keyInput.text = "Left arrow";
                 ButtonPressed bp = new ButtonPressed('3', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(inputMappings1[4]))
             {
-                keyInput.text = "Right arrow";
                 ButtonPressed bp = new ButtonPressed('4', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(inputMappings1[5]))
             {
-                keyInput.text = "HIGH";
                 ButtonPressed bp = new ButtonPressed('5', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(inputMappings1[6]))
             {
-                keyInput.text = "MED";
                 ButtonPressed bp = new ButtonPressed('6', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(inputMappings1[7]))
             {
-                keyInput.text = "LOW";
                 ButtonPressed bp = new ButtonPressed('7', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
@@ -205,43 +206,36 @@ public class keyListener : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                keyInput.text = "Up arrow";
                 ButtonPressed bp = new ButtonPressed('1', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                keyInput.text = "Down arrow";
                 ButtonPressed bp = new ButtonPressed('2', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(KeyCode.A))
             {
-                keyInput.text = "Left arrow";
                 ButtonPressed bp = new ButtonPressed('3', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
-                keyInput.text = "Right arrow";
                 ButtonPressed bp = new ButtonPressed('4', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(inputMappings1[1]))
             {
-                keyInput.text = "HIGH";
                 ButtonPressed bp = new ButtonPressed('5', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(inputMappings1[2]))
             {
-                keyInput.text = "MED";
                 ButtonPressed bp = new ButtonPressed('6', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(inputMappings1[3]))
             {
-                keyInput.text = "LOW";
                 ButtonPressed bp = new ButtonPressed('7', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
@@ -250,93 +244,79 @@ public class keyListener : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-                keyInput.text = "Up arrow";
                 ButtonPressed bp = new ButtonPressed('1', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                keyInput.text = "Down arrow";
                 ButtonPressed bp = new ButtonPressed('2', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(KeyCode.A))
             {
-                keyInput.text = "Left arrow";
                 ButtonPressed bp = new ButtonPressed('3', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
-                keyInput.text = "Right arrow";
                 ButtonPressed bp = new ButtonPressed('4', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(KeyCode.T))
             {
-                keyInput.text = "HIGH";
                 ButtonPressed bp = new ButtonPressed('5', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
-                keyInput.text = "MED";
                 ButtonPressed bp = new ButtonPressed('6', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
             if (Input.GetKeyDown(KeyCode.U))
             {
-                keyInput.text = "LOW";
                 ButtonPressed bp = new ButtonPressed('7', Time.time);
                 buttonPressedEnqueue(buttonPressedQueue, bp);
             }
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                keyInput2.text = "Up arrow";
                 ButtonPressed bp = new ButtonPressed('1', Time.time);
                 buttonPressedEnqueue2(buttonPressedQueue2, bp);
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                keyInput2.text = "Down arrow";
                 ButtonPressed bp = new ButtonPressed('2', Time.time);
                 buttonPressedEnqueue2(buttonPressedQueue2, bp);
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                keyInput2.text = "Left arrow";
                 ButtonPressed bp = new ButtonPressed('3', Time.time);
                 buttonPressedEnqueue2(buttonPressedQueue2, bp);
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                keyInput2.text = "Right arrow";
                 ButtonPressed bp = new ButtonPressed('4', Time.time);
                 buttonPressedEnqueue2(buttonPressedQueue2, bp);
             }
             if (Input.GetKeyDown(KeyCode.Keypad1))
             {
-                keyInput2.text = "HIGH";
                 ButtonPressed bp = new ButtonPressed('5', Time.time);
                 buttonPressedEnqueue2(buttonPressedQueue2, bp);
             }
             if (Input.GetKeyDown(KeyCode.Keypad2))
             {
-                keyInput2.text = "MED";
                 ButtonPressed bp = new ButtonPressed('6', Time.time);
                 buttonPressedEnqueue2(buttonPressedQueue2, bp);
             }
             if (Input.GetKeyDown(KeyCode.Keypad3))
             {
-                keyInput2.text = "LOW";
                 ButtonPressed bp = new ButtonPressed('7', Time.time);
                 buttonPressedEnqueue2(buttonPressedQueue2, bp);
             }
         }
         else print("WTF");
     }
-    
+
     //These next two functions create an array of 15 ints without replacement.
     public static List<int> GenerateRandom(int count, int min, int max)
     {
@@ -483,9 +463,8 @@ public class keyListener : MonoBehaviour
         {
             comboTimeHadouken = Time.time;
             timeLastCombo = Time.time;
-            //print(timeLastCombo);
-            comboOutput.text = "HADOUKEN";
             audio.PlayOneShot(hadouken2);
+            hadoukenBool = true;
             q.Clear();
         }
         /*if (containsCombo(q2, comboTatsumaki, 0) && Time.time - comboTimeTatsumaki > tatsumakiThreshold)
@@ -500,32 +479,32 @@ public class keyListener : MonoBehaviour
         {
             comboTimeWhirlwind = Time.time;
             timeLastCombo = Time.time;
-            comboOutput.text = "WHIRLWIND";
             audio.PlayOneShot(whirlwind);
+            whirlwindBool = true;
             q.Clear();
         }
         if (containsCombo(qPunchHigh, comboPunchHigh, 0) && Time.time - comboTimePunchHigh > punchHighThreshold)
         {
             comboTimePunchHigh = Time.time;
             timeLastCombo = Time.time;
-            comboOutput.text = "Punch HIGH";
             audio.PlayOneShot(punchHigh);
+            punchHighBool = true;
             q.Clear();
         }
         if (containsCombo(qPunchMed, comboPunchMed, 0) && Time.time - comboTimePunchMed > punchMedThreshold)
         {
             comboTimePunchMed = Time.time;
             timeLastCombo = Time.time;
-            comboOutput.text = "Punch MED";
             audio.PlayOneShot(punchMed);
+            punchMedBool = true;
             q.Clear();
         }
         if (containsCombo(qPunchLow, comboPunchLow, 0) && Time.time - comboTimePunchLow > punchLowThreshold)
         {
             comboTimePunchLow = Time.time;
             timeLastCombo = Time.time;
-            comboOutput.text = "Punch LOW";
             audio.PlayOneShot(punchLow);
+            punchLowBool = true;
             q.Clear();
         }
         queuePrint(q);
@@ -568,7 +547,6 @@ public class keyListener : MonoBehaviour
         {
             comboTimeHadouken2 = Time.time;
             timeLastCombo2 = Time.time;
-            comboOutput2.text = "HADOUKEN";
             audio.PlayOneShot(hadouken2);
             q.Clear();
         }
@@ -584,7 +562,6 @@ public class keyListener : MonoBehaviour
         {
             comboTimeWhirlwind2 = Time.time;
             timeLastCombo2 = Time.time;
-            comboOutput2.text = "WHIRLWIND";
             audio.PlayOneShot(whirlwind);
             q.Clear();
         }
@@ -592,7 +569,6 @@ public class keyListener : MonoBehaviour
         {
             comboTimePunchHigh2 = Time.time;
             timeLastCombo2 = Time.time;
-            comboOutput2.text = "Punch HIGH";
             audio.PlayOneShot(punchHigh);
             q.Clear();
         }
@@ -600,7 +576,6 @@ public class keyListener : MonoBehaviour
         {
             comboTimePunchMed2 = Time.time;
             timeLastCombo2 = Time.time;
-            comboOutput2.text = "Punch MED";
             audio.PlayOneShot(punchMed);
             q.Clear();
         }
@@ -608,7 +583,6 @@ public class keyListener : MonoBehaviour
         {
             comboTimePunchLow2 = Time.time;
             timeLastCombo2 = Time.time;
-            comboOutput2.text = "Punch LOW";
             audio.PlayOneShot(punchLow);
             q.Clear();
         }
