@@ -34,20 +34,41 @@ public class PlayerClass : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (gameObject.GetComponent<comboListener>().punchHighBool)
+        if (!gameObject.GetComponent<PlayerController>().player2)
         {
-            StartCoroutine(Attack(AttackType.High));
-            gameObject.GetComponent<comboListener>().punchHighBool = false;
+            if (gameObject.GetComponent<comboListener>().punchHighBool1)
+            {
+                StartCoroutine(Attack(AttackType.High));
+                gameObject.GetComponent<comboListener>().punchHighBool1 = false;
+            }
+            if (gameObject.GetComponent<comboListener>().punchMedBool1)
+            {
+                StartCoroutine(Attack(AttackType.Middle));
+                gameObject.GetComponent<comboListener>().punchMedBool1 = false;
+            }
+            if (gameObject.GetComponent<comboListener>().punchLowBool1)
+            {
+                StartCoroutine(Attack(AttackType.Low));
+                gameObject.GetComponent<comboListener>().punchLowBool1 = false;
+            }
         }
-        if (gameObject.GetComponent<comboListener>().punchMedBool)
+        else
         {
-            StartCoroutine(Attack(AttackType.Middle));
-            gameObject.GetComponent<comboListener>().punchMedBool = false;
-        }
-        if (gameObject.GetComponent<comboListener>().punchLowBool)
-        {
-            StartCoroutine(Attack(AttackType.Low));
-            gameObject.GetComponent<comboListener>().punchLowBool = false;
+            if (gameObject.GetComponent<comboListener>().punchHighBool2)
+            {
+                StartCoroutine(Attack(AttackType.High));
+                gameObject.GetComponent<comboListener>().punchHighBool2 = false;
+            }
+            if (gameObject.GetComponent<comboListener>().punchMedBool2)
+            {
+                StartCoroutine(Attack(AttackType.Middle));
+                gameObject.GetComponent<comboListener>().punchMedBool2 = false;
+            }
+            if (gameObject.GetComponent<comboListener>().punchLowBool2)
+            {
+                StartCoroutine(Attack(AttackType.Low));
+                gameObject.GetComponent<comboListener>().punchLowBool2 = false;
+            }
         }
         myHealthBar.fillAmount = health / initialHealth;
 	}

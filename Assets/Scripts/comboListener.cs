@@ -98,11 +98,17 @@ public class comboListener : MonoBehaviour
     Dictionary<int, KeyCode> inputMappings1 = new Dictionary<int, KeyCode>();    //Dictionary used for randomizing input
     Dictionary<int, KeyCode> inputMappings2 = new Dictionary<int, KeyCode>();
 
-    public bool punchHighBool = false;
-    public bool punchMedBool = false;
-    public bool punchLowBool = false;
-    public bool hadoukenBool = false;
-    public bool whirlwindBool = false;
+    public bool punchHighBool1 = false;
+    public bool punchMedBool1 = false;
+    public bool punchLowBool1 = false;
+    public bool hadoukenBool1 = false;
+    public bool whirlwindBool1 = false;
+
+    public bool punchHighBool2 = false;
+    public bool punchMedBool2 = false;
+    public bool punchLowBool2 = false;
+    public bool hadoukenBool2 = false;
+    public bool whirlwindBool2 = false;
 
     void Start()
     {
@@ -147,11 +153,17 @@ public class comboListener : MonoBehaviour
         comboTimePunchLow2 = 0f;
         audio = GetComponent<AudioSource>();
 
-        punchHighBool = false;
-        punchMedBool = false;
-        punchLowBool = false;
-        hadoukenBool = false;
-        whirlwindBool = false;
+        punchHighBool1 = false;
+        punchMedBool1 = false;
+        punchLowBool1 = false;
+        hadoukenBool1 = false;
+        whirlwindBool1 = false;
+
+        punchHighBool2 = false;
+        punchMedBool2 = false;
+        punchLowBool2 = false;
+        hadoukenBool2 = false;
+        whirlwindBool2 = false;
 
         //layout = 3;
         print("The layout is: " + layout);
@@ -464,7 +476,7 @@ public class comboListener : MonoBehaviour
             comboTimeHadouken = Time.time;
             timeLastCombo = Time.time;
             audio.PlayOneShot(hadouken2);
-            hadoukenBool = true;
+            hadoukenBool1 = true;
             q.Clear();
         }
         /*if (containsCombo(q2, comboTatsumaki, 0) && Time.time - comboTimeTatsumaki > tatsumakiThreshold)
@@ -480,7 +492,7 @@ public class comboListener : MonoBehaviour
             comboTimeWhirlwind = Time.time;
             timeLastCombo = Time.time;
             audio.PlayOneShot(whirlwind);
-            whirlwindBool = true;
+            whirlwindBool1 = true;
             q.Clear();
         }
         if (containsCombo(qPunchHigh, comboPunchHigh, 0) && Time.time - comboTimePunchHigh > punchHighThreshold)
@@ -488,7 +500,7 @@ public class comboListener : MonoBehaviour
             comboTimePunchHigh = Time.time;
             timeLastCombo = Time.time;
             audio.PlayOneShot(punchHigh);
-            punchHighBool = true;
+            punchHighBool1 = true;
             q.Clear();
         }
         if (containsCombo(qPunchMed, comboPunchMed, 0) && Time.time - comboTimePunchMed > punchMedThreshold)
@@ -496,7 +508,7 @@ public class comboListener : MonoBehaviour
             comboTimePunchMed = Time.time;
             timeLastCombo = Time.time;
             audio.PlayOneShot(punchMed);
-            punchMedBool = true;
+            punchMedBool1 = true;
             q.Clear();
         }
         if (containsCombo(qPunchLow, comboPunchLow, 0) && Time.time - comboTimePunchLow > punchLowThreshold)
@@ -504,7 +516,7 @@ public class comboListener : MonoBehaviour
             comboTimePunchLow = Time.time;
             timeLastCombo = Time.time;
             audio.PlayOneShot(punchLow);
-            punchLowBool = true;
+            punchLowBool1 = true;
             q.Clear();
         }
         queuePrint(q);
@@ -548,6 +560,7 @@ public class comboListener : MonoBehaviour
             comboTimeHadouken2 = Time.time;
             timeLastCombo2 = Time.time;
             audio.PlayOneShot(hadouken2);
+            hadoukenBool2 = true;
             q.Clear();
         }
         /*if (containsCombo(q2, comboTatsumaki, 0) && Time.time - comboTimeTatsumaki2 > tatsumakiThreshold)
@@ -563,6 +576,7 @@ public class comboListener : MonoBehaviour
             comboTimeWhirlwind2 = Time.time;
             timeLastCombo2 = Time.time;
             audio.PlayOneShot(whirlwind);
+            whirlwindBool2 = true;
             q.Clear();
         }
         if (containsCombo(qPunchHigh, comboPunchHigh, 0) && Time.time - comboTimePunchHigh2 > punchHighThreshold)
@@ -570,6 +584,7 @@ public class comboListener : MonoBehaviour
             comboTimePunchHigh2 = Time.time;
             timeLastCombo2 = Time.time;
             audio.PlayOneShot(punchHigh);
+            punchHighBool2 = true;
             q.Clear();
         }
         if (containsCombo(qPunchMed, comboPunchMed, 0) && Time.time - comboTimePunchMed2 > punchMedThreshold)
@@ -577,6 +592,7 @@ public class comboListener : MonoBehaviour
             comboTimePunchMed2 = Time.time;
             timeLastCombo2 = Time.time;
             audio.PlayOneShot(punchMed);
+            punchMedBool2 = true;
             q.Clear();
         }
         if (containsCombo(qPunchLow, comboPunchLow, 0) && Time.time - comboTimePunchLow2 > punchLowThreshold)
@@ -584,6 +600,7 @@ public class comboListener : MonoBehaviour
             comboTimePunchLow2 = Time.time;
             timeLastCombo2 = Time.time;
             audio.PlayOneShot(punchLow);
+            punchLowBool2 = true;
             q.Clear();
         }
         queuePrint(q);
