@@ -35,11 +35,13 @@ public class PlayerController : MonoBehaviour {
             {
                 transform.position += Vector3.left * dashSpeed * Time.deltaTime;
                 gameObject.GetComponent<comboListener>().dashLeftBool2 = false;
+                gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
             }
             if (gameObject.GetComponent<comboListener>().dashRightBool2)
             {
                 transform.position += Vector3.right * dashSpeed * Time.deltaTime;
                 gameObject.GetComponent<comboListener>().dashRightBool2 = false;
+                gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
             }
 
 
@@ -89,11 +91,13 @@ public class PlayerController : MonoBehaviour {
             {
                 transform.position += Vector3.left * dashSpeed * Time.deltaTime;
                 gameObject.GetComponent<comboListener>().dashLeftBool1 = false;
+                gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
             }
             if (gameObject.GetComponent<comboListener>().dashRightBool1)
             {
                 transform.position += Vector3.right * dashSpeed * Time.deltaTime;
                 gameObject.GetComponent<comboListener>().dashRightBool1 = false;
+                gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
             }
             if (Input.GetKey(KeyCode.A))
             {
