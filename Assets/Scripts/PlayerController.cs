@@ -33,17 +33,31 @@ public class PlayerController : MonoBehaviour {
             //quick dash
             if (gameObject.GetComponent<comboListener>().dashLeftBool2)
             {
-                transform.position += Vector3.left * dashSpeed * Time.deltaTime;
-                gameObject.GetComponent<comboListener>().dashLeftBool2 = false;
-                gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
-                facingleft = true;
+                if (inAir)
+                {
+                    gameObject.GetComponent<comboListener>().dashLeftBool2 = false;
+                }
+                else
+                {
+                    transform.position += Vector3.left * dashSpeed * Time.deltaTime;
+                    gameObject.GetComponent<comboListener>().dashLeftBool2 = false;
+                    gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
+                    facingleft = true;
+                }
             }
             if (gameObject.GetComponent<comboListener>().dashRightBool2)
             {
-                transform.position += Vector3.right * dashSpeed * Time.deltaTime;
-                gameObject.GetComponent<comboListener>().dashRightBool2 = false;
-                gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
-                facingleft = false;
+                if (inAir)
+                {
+                    gameObject.GetComponent<comboListener>().dashRightBool2 = false;
+                }
+                else
+                {
+                    transform.position += Vector3.right * dashSpeed * Time.deltaTime;
+                    gameObject.GetComponent<comboListener>().dashRightBool2 = false;
+                    gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
+                    facingleft = false;
+                }
             }
 
 
@@ -91,17 +105,32 @@ public class PlayerController : MonoBehaviour {
             //quick dash
             if (gameObject.GetComponent<comboListener>().dashLeftBool1)
             {
-                transform.position += Vector3.left * dashSpeed * Time.deltaTime;
-                gameObject.GetComponent<comboListener>().dashLeftBool1 = false;
-                gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
-                facingleft = true;
+                if (inAir)
+                {
+                    gameObject.GetComponent<comboListener>().dashLeftBool1 = false;
+                }
+                else
+                {
+                    transform.position += Vector3.left * dashSpeed * Time.deltaTime;
+                    gameObject.GetComponent<comboListener>().dashLeftBool1 = false;
+                    gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
+                    facingleft = true;
+                }
             }
             if (gameObject.GetComponent<comboListener>().dashRightBool1)
             {
-                transform.position += Vector3.right * dashSpeed * Time.deltaTime;
-                gameObject.GetComponent<comboListener>().dashRightBool1 = false;
-                gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
-                facingleft = false;
+                if (inAir)
+                {
+                    gameObject.GetComponent<comboListener>().dashRightBool1 = false;
+                }
+                else
+                {
+                    transform.position += Vector3.right * dashSpeed * Time.deltaTime;
+                    gameObject.GetComponent<comboListener>().dashRightBool1 = false;
+                    gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
+                    facingleft = false;
+                }
+                
             }
             if (Input.GetKey(KeyCode.A))
             {
