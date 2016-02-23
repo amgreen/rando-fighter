@@ -595,7 +595,7 @@ public class comboListener : MonoBehaviour
             dashLeftBool1 = true;
             q.Clear();
         }
-        if (containsCombo(qDashLeft, comboDashRight, 0) && Time.time - player1Times.Dash > dashThreshold)
+        if (containsCombo(qDashRight, comboDashRight, 0) && Time.time - player1Times.Dash > dashThreshold)
         {
             player1Times.Dash = Time.time;
             //player2Times.LastCombo = Time.time;
@@ -702,7 +702,7 @@ public class comboListener : MonoBehaviour
             dashLeftBool2 = true;
             q.Clear();
         }
-        if (containsCombo(qDashLeft, comboDashRight, 0) && Time.time - player2Times.Dash > dashThreshold)
+        if (containsCombo(qDashRight, comboDashRight, 0) && Time.time - player2Times.Dash > dashThreshold)
         {
             player2Times.Dash = Time.time;
             //player2Times.LastCombo = Time.time;
