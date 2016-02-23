@@ -9,6 +9,10 @@ TagManager:
   - middle
   - low
   - projectile
+  - wall
+  - highCombo
+  - middleCombo
+  - lowCombo
   layers:
   - Default
   - TransparentFX

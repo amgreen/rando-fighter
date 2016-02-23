@@ -36,6 +36,7 @@ public class PlayerClass : MonoBehaviour {
     // Use this for initialization
     void Start () {
         initialHealth = health;
+
 	}
 	
 	// Update is called once per frame
