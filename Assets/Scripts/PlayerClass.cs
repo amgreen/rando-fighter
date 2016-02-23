@@ -9,6 +9,7 @@ public class PlayerClass : MonoBehaviour {
     private float initialHealth;
 
     private enum AttackType {High, Middle, Low, HighCombo, MiddleCombo, LowCombo};
+    private bool active = false;
     public float comboDamageMultiplier = 3.0f;
     public float comboTimeMultiplier = 2.0f;
     public float attackTimeHigh = .5f;
@@ -124,6 +125,87 @@ public class PlayerClass : MonoBehaviour {
     {
 
         // Turn off all other hi
+
+        /*
+        myFist.SetActive(false);
+        middleFist.SetActive(false);
+        myFoot.SetActive(false);
+        myFistCombo.SetActive(false);
+        middleFistCombo.SetActive(false);
+        myFootCombo.SetActive(false);*/
+
+        currentlyAttacking = true;
+        Debug.Log(executeAttack);
+        if (!active)
+        {
+            if (executeAttack == AttackType.High)
+            {
+                active = true;
+                myFist.SetActive(true);
+                gameObject.GetComponent<Animator>().SetTrigger("highAtk");
+                yield return new WaitForSeconds(attackTimeHigh);
+                myFist.SetActive(false);
+                active = false;
+            }
+            if (executeAttack == AttackType.Middle)
+            {
+                active = true;
+                middleFist.SetActive(true);
+                gameObject.GetComponent<Animator>().SetTrigger("midAtk");
+                yield return new WaitForSeconds(attackTimeMiddle);
+                middleFist.SetActive(false);
+                active = false;
+            }
+            if (executeAttack == AttackType.Low)
+            {
+                active = true;
+                myFoot.SetActive(true);
+                gameObject.GetComponent<Animator>().SetTrigger("lowAtk");
+                yield return new WaitForSeconds(attackTimeLow);
+                myFoot.SetActive(false);
+                active = false;
+            }
+        }
+        //combos
+        else {
+            
+            if (executeAttack == AttackType.HighCombo)
+            {
+                turnOffAttacks();
+                active = true;
+                myFistCombo.SetActive(true);
+                gameObject.GetComponent<Animator>().SetTrigger("highAtk");
+                yield return new WaitForSeconds(attackTimeHigh * comboTimeMultiplier);
+                myFistCombo.SetActive(false);
+                active = false;
+            }
+            if (executeAttack == AttackType.MiddleCombo)
+            {
+                turnOffAttacks();
+                active = true;
+                middleFistCombo.SetActive(true);
+                gameObject.GetComponent<Animator>().SetTrigger("midAtk");
+                yield return new WaitForSeconds(attackTimeMiddle * comboTimeMultiplier);
+                middleFistCombo.SetActive(false);
+                active = false;
+            }
+            if (executeAttack == AttackType.LowCombo)
+            {
+                turnOffAttacks();
+                active = true;
+                myFootCombo.SetActive(true);
+                gameObject.GetComponent<Animator>().SetTrigger("lowAtk");
+                yield return new WaitForSeconds(attackTimeLow * comboTimeMultiplier);
+                myFootCombo.SetActive(false);
+                active = false;
+            }
+        }
+        currentlyAttacking = false;
+        attackedAlready = false;
+    }
+
+    void turnOffAttacks()
+    {
         myFist.SetActive(false);
         middleFist.SetActive(false);
         myFoot.SetActive(false);
@@ -131,60 +213,7 @@ public class PlayerClass : MonoBehaviour {
         middleFistCombo.SetActive(false);
         myFootCombo.SetActive(false);
 
-        currentlyAttacking = true;
-        Debug.Log(executeAttack);
-        if (executeAttack == AttackType.High)
-        {
-
-            myFist.SetActive(true);
-			gameObject.GetComponent<Animator> ().SetTrigger ("highAtk");
-            yield return new WaitForSeconds(attackTimeHigh);
-            myFist.SetActive(false);
-        }
-        if (executeAttack == AttackType.Middle)
-        {
-            middleFist.SetActive(true);
-			gameObject.GetComponent<Animator> ().SetTrigger ("midAtk");
-            yield return new WaitForSeconds(attackTimeMiddle);
-            middleFist.SetActive(false);
-        }
-        if (executeAttack == AttackType.Low)
-        {
-            myFoot.SetActive(true);
-			gameObject.GetComponent<Animator> ().SetTrigger ("lowAtk");
-            yield return new WaitForSeconds(attackTimeLow);
-            myFoot.SetActive(false);
-        }
-
-        //combos
-
-        if (executeAttack == AttackType.HighCombo)
-        {
-
-            myFistCombo.SetActive(true);
-            gameObject.GetComponent<Animator>().SetTrigger("highAtk");
-            yield return new WaitForSeconds(attackTimeHigh*comboTimeMultiplier);
-            myFistCombo.SetActive(false);
-        }
-        if (executeAttack == AttackType.MiddleCombo)
-        {
-            middleFistCombo.SetActive(true);
-            gameObject.GetComponent<Animator>().SetTrigger("midAtk");
-            yield return new WaitForSeconds(attackTimeMiddle*comboTimeMultiplier);
-            middleFistCombo.SetActive(false);
-        }
-        if (executeAttack == AttackType.LowCombo)
-        {
-            myFootCombo.SetActive(true);
-            gameObject.GetComponent<Animator>().SetTrigger("lowAtk");
-            yield return new WaitForSeconds(attackTimeLow*comboTimeMultiplier);
-            myFootCombo.SetActive(false);
-        }
-        currentlyAttacking = false;
-        attackedAlready = false;
     }
-
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject otherObject = collision.collider.gameObject;
