@@ -227,6 +227,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &313596747 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 199406, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+  m_PrefabInternal: {fileID: 1013270032}
 --- !u!224 &322260947 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22452600, guid: 5e56c30e6aa6a944fbf170b23c0a27e4,
@@ -598,6 +602,26 @@ Prefab:
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: punchLowThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: myFistCombo
+      value: 
+      objectReference: {fileID: 313596747}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: middleFistCombo
+      value: 
+      objectReference: {fileID: 313596747}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: myFootCombo
+      value: 
+      objectReference: {fileID: 313596747}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: dashSpeed
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: jumpSpeed
+      value: 8000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
@@ -1041,6 +1065,26 @@ Prefab:
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: punchLowThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: myFistCombo
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: middleFistCombo
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: myFootCombo
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: dashSpeed
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: jumpSpeed
+      value: 8000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}

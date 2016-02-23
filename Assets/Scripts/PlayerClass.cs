@@ -97,17 +97,17 @@ public class PlayerClass : MonoBehaviour {
             if (gameObject.GetComponent<comboListener>().punchHighBool2)
             {
                 StartCoroutine(Attack(AttackType.High));
-                gameObject.GetComponent<comboListener>().punchHighBool2 = false;
+                //gameObject.GetComponent<comboListener>().punchHighBool2 = false;
             }
             if (gameObject.GetComponent<comboListener>().punchMedBool2)
             {
                 StartCoroutine(Attack(AttackType.Middle));
-                gameObject.GetComponent<comboListener>().punchMedBool2 = false;
+                //gameObject.GetComponent<comboListener>().punchMedBool2 = false;
             }
             if (gameObject.GetComponent<comboListener>().punchLowBool2)
             {
                 StartCoroutine(Attack(AttackType.Low));
-                gameObject.GetComponent<comboListener>().punchLowBool2 = false;
+                //gameObject.GetComponent<comboListener>().punchLowBool2 = false;
             }
         }
 
