@@ -34,10 +34,12 @@ public class PlayerController : MonoBehaviour {
             if (gameObject.GetComponent<comboListener>().dashLeftBool2)
             {
                 transform.position += Vector3.left * dashSpeed * Time.deltaTime;
+                gameObject.GetComponent<comboListener>().dashLeftBool2 = false;
             }
             if (gameObject.GetComponent<comboListener>().dashRightBool2)
             {
                 transform.position += Vector3.right * dashSpeed * Time.deltaTime;
+                gameObject.GetComponent<comboListener>().dashRightBool2 = false;
             }
 
 
@@ -86,10 +88,12 @@ public class PlayerController : MonoBehaviour {
             if (gameObject.GetComponent<comboListener>().dashLeftBool1)
             {
                 transform.position += Vector3.left * dashSpeed * Time.deltaTime;
+                gameObject.GetComponent<comboListener>().dashLeftBool1 = false;
             }
             if (gameObject.GetComponent<comboListener>().dashRightBool1)
             {
                 transform.position += Vector3.right * dashSpeed * Time.deltaTime;
+                gameObject.GetComponent<comboListener>().dashRightBool1 = false;
             }
             if (Input.GetKey(KeyCode.A))
             {
