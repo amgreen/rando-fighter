@@ -69,7 +69,7 @@ public class comboListener : MonoBehaviour
         3: EVERYTHING SET 
     */
     public int keyBufferSize = 8;   //Determines how many key inputs to store in the queue. A larger number will slow performance.
-    int comboTextLinger = 2;        //Determines how long your combo text will stay on screen before disappearing
+    //int comboTextLinger = 2;        //Determines how long your combo text will stay on screen before disappearing
 
     /*
     public AudioClip hadoukenSound;      //Pointer to hadouken2.wav
@@ -82,9 +82,9 @@ public class comboListener : MonoBehaviour
     public AudioClip dash;
     AudioSource audio;              //Something that helps play audio
 
-    float hadoukenThreshold = 1f;        //Amount of buffer time between hadoukens
-    float tatsumakiThreshold = 1f;       //Amount of buffer time between tatsumakis
-    float whirlwindThreshold = 2f;       //Amount of buffer time between whirlwinds
+    //float hadoukenThreshold = 1f;        //Amount of buffer time between hadoukens
+    //float tatsumakiThreshold = 1f;       //Amount of buffer time between tatsumakis
+    //float whirlwindThreshold = 2f;       //Amount of buffer time between whirlwinds
     public float punchHighThreshold = .5f;
     public float punchMedThreshold = .5f;
     public float punchLowThreshold = .5f;
@@ -93,16 +93,16 @@ public class comboListener : MonoBehaviour
     public float punchHighComboThreshold = 1.5f;
     public float dashThreshold = 0.5f;
 
-    char[] comboHadouken = new char[3] { '8', '8', '8' };           //char array that stores input to combo
-    char[] comboTatsumaki = new char[3] { '8', '8', '8' };          //8 isn't a char being used. 
-    char[] comboWhirlwind = new char[3] { '8', '8', '8' };          //all 8 values are depreciated
-    char[] comboPunchHigh = new char[3] { '5', '4', '5' };
-    char[] comboPunchMed = new char[3] { '6', '5', '4' };
+    //char[] comboHadouken = new char[3] { '8', '8', '8' };           //char array that stores input to combo
+    //char[] comboTatsumaki = new char[3] { '8', '8', '8' };          //8 isn't a char being used. 
+    //char[] comboWhirlwind = new char[3] { '8', '8', '8' };          //all 8 values are depreciated
+    char[] comboPunchHigh = new char[3] { '5', '6', '5' };
+    char[] comboPunchMed = new char[3] { '6', '7', '5' };
     char[] comboPunchLow = new char[2] { '7', '6' };
     char[] comboDashLeft = new char[2] { '3', '3' };
     char[] comboDashRight = new char[2] { '4', '4' };
 
-    public float comboTimeout = 1.5f;
+    public float comboTimeout = 1.0f;
 
     /*
     float comboTimeHadouken;        //Time value since last Hadouken
@@ -567,7 +567,7 @@ public class comboListener : MonoBehaviour
         {
             player1Times.PunchHigh = Time.time;
             player1Times.LastCombo = Time.time;
-            //audio.PlayOneShot(punchHighSound);
+            audio.PlayOneShot(punchHighSound);
             punchHighComboBool1 = true;
             q.Clear();
         }
@@ -575,7 +575,7 @@ public class comboListener : MonoBehaviour
         {
             player1Times.PunchMed = Time.time;
             player1Times.LastCombo = Time.time;
-            //audio.PlayOneShot(punchMedSound);
+            audio.PlayOneShot(punchMedSound);
             punchMedComboBool1 = true;
             q.Clear();
         }
@@ -583,7 +583,7 @@ public class comboListener : MonoBehaviour
         {
             player1Times.PunchLow = Time.time;
             player1Times.LastCombo = Time.time;
-            //audio.PlayOneShot(punchLowSound);
+            audio.PlayOneShot(punchLowSound);
             punchLowComboBool1 = true;
             q.Clear();
         }
@@ -674,7 +674,7 @@ public class comboListener : MonoBehaviour
         {
             player2Times.PunchHigh = Time.time;
             player2Times.LastCombo = Time.time;
-            //audio.PlayOneShot(punchHighSound);
+            audio.PlayOneShot(punchHighSound);
             punchHighComboBool2 = true;
             q.Clear();
         }
@@ -682,7 +682,7 @@ public class comboListener : MonoBehaviour
         {
             player2Times.PunchMed = Time.time;
             player2Times.LastCombo = Time.time;
-            //audio.PlayOneShot(punchMedSound);
+            audio.PlayOneShot(punchMedSound);
             punchMedComboBool2 = true;
             q.Clear();
         }
@@ -690,7 +690,7 @@ public class comboListener : MonoBehaviour
         {
             player2Times.PunchLow = Time.time;
             player2Times.LastCombo = Time.time;
-            //audio.PlayOneShot(punchLowSound);
+            audio.PlayOneShot(punchLowSound);
             punchLowComboBool2 = true;
             q.Clear();
         }
