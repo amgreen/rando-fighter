@@ -815,6 +815,18 @@ Prefab:
       propertyPath: player2
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: dashSpeed
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: jumpSpeed
+      value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: comboTimeout
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
   m_IsPrefabParent: 0
@@ -1310,6 +1322,18 @@ Prefab:
     - target: {fileID: 11468686, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: m_Color.b
       value: 0.006896496
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: jumpSpeed
+      value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: dashSpeed
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: comboTimeout
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
