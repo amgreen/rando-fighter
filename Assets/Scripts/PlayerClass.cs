@@ -220,33 +220,27 @@ public class PlayerClass : MonoBehaviour {
         GameObject otherObject = collision.collider.gameObject;
         if (otherObject.tag == "high")
         {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
-            {
                 attackedAlready = true;
                 health -= attackDamageHigh;
                 Debug.Log("Health: " + health);
-            }
+            
             gameObject.GetComponent<Animator>().SetTrigger("playerHit");
         }
         if (otherObject.tag == "middle")
         {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
-            {
+            
                 attackedAlready = true;
                 health -= attackDamageMiddle;
                 Debug.Log("Health: " + health);
                 gameObject.GetComponent<Animator>().SetTrigger("playerHit");
-            }
+            
         }
         if (otherObject.tag == "low")
         {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
-            {
-                attackedAlready = true;
-                health -= attackDamageLow;
-                Debug.Log("Health: " + health);
-                gameObject.GetComponent<Animator>().SetTrigger("playerHit");
-            }
+            attackedAlready = true;
+            health -= attackDamageLow;
+            Debug.Log("Health: " + health);
+            gameObject.GetComponent<Animator>().SetTrigger("playerHit");
         }
 
 
@@ -255,33 +249,27 @@ public class PlayerClass : MonoBehaviour {
 
         if (otherObject.tag == "highCombo")
         {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
-            {
-                attackedAlready = true;
-                health -= attackDamageHigh * comboDamageMultiplier;
-                Debug.Log("Health: " + health);
-            }
+            attackedAlready = true;
+            health -= attackDamageHigh * comboDamageMultiplier;
+            Debug.Log("Health: " + health);
             gameObject.GetComponent<Animator>().SetTrigger("playerHit");
         }
         if (otherObject.tag == "middleCombo")
         {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
-            {
-                attackedAlready = true;
-                health -= attackDamageMiddle * comboDamageMultiplier;
-                Debug.Log("Health: " + health);
-                gameObject.GetComponent<Animator>().SetTrigger("playerHit");
-            }
+            attackedAlready = true;
+            health -= attackDamageMiddle * comboDamageMultiplier;
+            Debug.Log("Health: " + health);
+            gameObject.GetComponent<Animator>().SetTrigger("playerHit");
+            
         }
         if (otherObject.tag == "lowCombo")
         {
-            if (otherObject.transform.parent.GetComponent<PlayerClass>().currentlyAttacking)
-            {
+            
                 attackedAlready = true;
                 health -= attackDamageLow * comboDamageMultiplier;
                 Debug.Log("Health: " + health);
                 gameObject.GetComponent<Animator>().SetTrigger("playerHit");
-            }
+            
         }
 
     }
