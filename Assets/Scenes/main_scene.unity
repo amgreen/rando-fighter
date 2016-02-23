@@ -379,7 +379,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 253921733}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65b70f705a697984bad91508fe3d41ae, type: 3}
+  m_Script: {fileID: 11500000, guid: d1f6186971dd9344c8b9ff078aaf7732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &322260947 stripped
@@ -810,6 +810,10 @@ Prefab:
     - target: {fileID: 8274580, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: MinDistance
       value: 39.96991
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: player2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
