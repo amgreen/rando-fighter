@@ -751,7 +751,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dash - AA / DD
+  m_Text: Dash - A A / D D
 --- !u!222 &474047526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1394,6 +1394,14 @@ Prefab:
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: comboTimeout
       value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: dashThreshold
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: health
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
@@ -2481,7 +2489,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: health
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: attackDamageHigh
@@ -2601,7 +2609,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: dashThreshold
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: dash

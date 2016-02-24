@@ -103,8 +103,8 @@ public class fadingText : MonoBehaviour
             timerp2c2 = Time.time;
             p2c2.CrossFadeAlpha(1.0f, 0.001f, false);
         }
-        if (Time.time - timerp1c2 > 0.5)
-            p1c2.CrossFadeAlpha(0.0f, fadeTime, false);
+        if (Time.time - timerp2c2 > 0.5)
+            p2c2.CrossFadeAlpha(0.0f, fadeTime, false);
 
 
 

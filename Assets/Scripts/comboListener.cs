@@ -86,8 +86,8 @@ public class comboListener : MonoBehaviour
     char[] comboPunchHigh = new char[3] { '5', '6', '5' };
     char[] comboPunchMed = new char[3] { '6', '7', '5' };
     char[] comboPunchLow = new char[2] { '7', '6' };
-    char[] comboDashLeft = new char[2] { '3', '3' };
-    char[] comboDashRight = new char[2] { '4', '4' };
+    //char[] comboDashLeft = new char[2] { '3', '3' };
+    //char[] comboDashRight = new char[2] { '4', '4' };
 
     public float comboTimeout = 1.0f;
 
@@ -134,6 +134,9 @@ public class comboListener : MonoBehaviour
     public bool p2c2Bool = false;
     public bool p2c3Bool = false;
     public bool p2DBool = false;
+
+    bool lastLeftPressed = false;
+    bool lastRightPressed = false;
 
     void Start()
     {
@@ -189,23 +192,53 @@ public class comboListener : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.W))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('1', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
+                    */
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('2', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
+                    */
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.A))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('3', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
+                    */
+                    if (lastLeftPressed && Time.time - player1Times.Dash > dashThreshold)
+                    {
+                        player1Times.Dash = Time.time;
+                        audio.PlayOneShot(dash);
+                        dashLeftBool1 = true;
+                        p1DBool = true;
+                    }
+                    lastLeftPressed = true;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.D))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('4', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
+                    */
+                    if (lastRightPressed && Time.time - player1Times.Dash > dashThreshold)
+                    {
+                        player1Times.Dash = Time.time;
+                        audio.PlayOneShot(dash);
+                        dashRightBool1 = true;
+                        p1DBool = true;
+                    }
+                    lastLeftPressed = false;
+                    lastRightPressed = true;
                 }
                 if (Input.GetKeyDown(inputMappings1[0]))
                 {
@@ -243,25 +276,54 @@ public class comboListener : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
+                    /*
                     ButtonPressed bp = new ButtonPressed('1', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                    */
                 }
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
+                    /*
                     ButtonPressed bp = new ButtonPressed('2', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                    */
                 }
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('3', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                    */
+                    if (lastLeftPressed && Time.time - player2Times.Dash > dashThreshold)
+                    {
+                        player2Times.Dash = Time.time;
+                        audio.PlayOneShot(dash);
+                        dashLeftBool2 = true;
+                        p2DBool = true;
+                    }
+                    lastLeftPressed = true;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('4', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                    */
+                    if (lastRightPressed && Time.time - player1Times.Dash > dashThreshold)
+                    {
+                        player2Times.Dash = Time.time;
+                        audio.PlayOneShot(dash);
+                        dashRightBool2 = true;
+                        p2DBool = true;
+                    }
+                    lastLeftPressed = false;
+                    lastRightPressed = true;
                 }
-
                 if (Input.GetKeyDown(inputMappings2[0]))
                 {
                     ButtonPressed bp = new ButtonPressed('5', Time.time);
@@ -300,23 +362,53 @@ public class comboListener : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.W))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('1', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
+                    */
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('2', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
+                    */
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.A))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('3', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
+                    */
+                    if (lastLeftPressed && Time.time - player1Times.Dash > dashThreshold)
+                    {
+                        player1Times.Dash = Time.time;
+                        audio.PlayOneShot(dash);
+                        dashLeftBool1 = true;
+                        p1DBool = true;
+                    }
+                    lastLeftPressed = true;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.D))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('4', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
+                    */
+                    if (lastRightPressed && Time.time - player1Times.Dash > dashThreshold)
+                    {
+                        player1Times.Dash = Time.time;
+                        audio.PlayOneShot(dash);
+                        dashRightBool1 = true;
+                        p1DBool = true;
+                    }
+                    lastLeftPressed = false;
+                    lastRightPressed = true;
                 }
                 if (Input.GetKeyDown(KeyCode.T))
                 {
@@ -327,6 +419,8 @@ public class comboListener : MonoBehaviour
                         player1Times.Punch = Time.time;
                         punchHighBool1 = true;
                     }
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.Y))
                 {
@@ -337,6 +431,8 @@ public class comboListener : MonoBehaviour
                         player1Times.Punch = Time.time;
                         punchMedBool1 = true;
                     }
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.U))
                 {
@@ -347,29 +443,61 @@ public class comboListener : MonoBehaviour
                         player1Times.Punch = Time.time;
                         punchLowBool1 = true;
                     }
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
             }
             else
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
+                    /*
                     ButtonPressed bp = new ButtonPressed('1', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                    */
                 }
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
+                    /*
                     ButtonPressed bp = new ButtonPressed('2', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                    */
                 }
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('3', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                    */
+                    if (lastLeftPressed && Time.time - player2Times.Dash > dashThreshold)
+                    {
+                        player2Times.Dash = Time.time;
+                        audio.PlayOneShot(dash);
+                        dashLeftBool2 = true;
+                        p2DBool = true;
+                    }
+                    lastLeftPressed = true;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
+                    /*
                     ButtonPressed bp = new ButtonPressed('4', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
+                    */
+                    if (lastRightPressed && Time.time - player1Times.Dash > dashThreshold)
+                    {
+                        player2Times.Dash = Time.time;
+                        audio.PlayOneShot(dash);
+                        dashRightBool2 = true;
+                        p2DBool = true;
+                    }
+                    lastLeftPressed = false;
+                    lastRightPressed = true;
                 }
                 if (Input.GetKeyDown(KeyCode.Keypad1))
                 {
@@ -380,6 +508,8 @@ public class comboListener : MonoBehaviour
                         player2Times.Punch = Time.time;
                         punchHighBool2 = true;
                     }
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.Keypad2))
                 {
@@ -390,6 +520,8 @@ public class comboListener : MonoBehaviour
                         player2Times.Punch = Time.time;
                         punchMedBool2 = true;
                     }
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
                 if (Input.GetKeyDown(KeyCode.Keypad3))
                 {
@@ -400,6 +532,8 @@ public class comboListener : MonoBehaviour
                         player2Times.Punch = Time.time;
                         punchLowBool2 = true;
                     }
+                    lastLeftPressed = false;
+                    lastRightPressed = false;
                 }
             }
         }
@@ -557,8 +691,8 @@ public class comboListener : MonoBehaviour
         Queue<ButtonPressed> qPunchHigh = new Queue<ButtonPressed>();
         Queue<ButtonPressed> qPunchMed = new Queue<ButtonPressed>();
         Queue<ButtonPressed> qPunchLow = new Queue<ButtonPressed>();
-        Queue<ButtonPressed> qDashLeft = new Queue<ButtonPressed>();
-        Queue<ButtonPressed> qDashRight = new Queue<ButtonPressed>();
+        //Queue<ButtonPressed> qDashLeft = new Queue<ButtonPressed>();
+        //Queue<ButtonPressed> qDashRight = new Queue<ButtonPressed>();
         foreach (ButtonPressed obj in q)
         {
             /*
@@ -569,8 +703,8 @@ public class comboListener : MonoBehaviour
             qPunchHigh.Enqueue(obj);
             qPunchMed.Enqueue(obj);
             qPunchLow.Enqueue(obj);
-            qDashLeft.Enqueue(obj);
-            qDashRight.Enqueue(obj);
+            //qDashLeft.Enqueue(obj);
+            //qDashRight.Enqueue(obj);
         }
         /*if (containsCombo(q1, comboHadouken, 0) && Time.time - player1Times.Hadouken > hadoukenThreshold)
         {
@@ -622,6 +756,7 @@ public class comboListener : MonoBehaviour
             p1c3Bool = true;
             q.Clear();
         }
+        /*
         if (containsCombo(qDashLeft, comboDashLeft, 0) && Time.time - player1Times.Dash > dashThreshold)
         {
             player1Times.Dash = Time.time;
@@ -640,6 +775,7 @@ public class comboListener : MonoBehaviour
             p1DBool = true;
             q.Clear();
         }
+        */
         //queuePrint(q);
     }
 
@@ -668,8 +804,8 @@ public class comboListener : MonoBehaviour
         Queue<ButtonPressed> qPunchHigh = new Queue<ButtonPressed>();
         Queue<ButtonPressed> qPunchMed = new Queue<ButtonPressed>();
         Queue<ButtonPressed> qPunchLow = new Queue<ButtonPressed>();
-        Queue<ButtonPressed> qDashLeft = new Queue<ButtonPressed>();
-        Queue<ButtonPressed> qDashRight = new Queue<ButtonPressed>();
+        //Queue<ButtonPressed> qDashLeft = new Queue<ButtonPressed>();
+        //Queue<ButtonPressed> qDashRight = new Queue<ButtonPressed>();
         foreach (ButtonPressed obj in q)
         {
             /*
@@ -680,8 +816,8 @@ public class comboListener : MonoBehaviour
             qPunchHigh.Enqueue(obj);
             qPunchMed.Enqueue(obj);
             qPunchLow.Enqueue(obj);
-            qDashLeft.Enqueue(obj);
-            qDashRight.Enqueue(obj);
+            //qDashLeft.Enqueue(obj);
+            //qDashRight.Enqueue(obj);
         }
         /*
         if (containsCombo(q1, comboHadouken, 0) && Time.time - player2Times.Hadouken > hadoukenThreshold)
@@ -737,6 +873,7 @@ public class comboListener : MonoBehaviour
             p2c3Bool = true;
             q.Clear();
         }
+        /*
         if (containsCombo(qDashLeft, comboDashLeft, 0) && Time.time - player2Times.Dash > dashThreshold)
         {
             player2Times.Dash = Time.time;
@@ -749,12 +886,12 @@ public class comboListener : MonoBehaviour
         if (containsCombo(qDashRight, comboDashRight, 0) && Time.time - player2Times.Dash > dashThreshold)
         {
             player2Times.Dash = Time.time;
-            //player2Times.LastCombo = Time.time;
             audio.PlayOneShot(dash);
             dashRightBool2 = true;
             p2DBool = true;
             q.Clear();
         }
+        */
         //queuePrint(q);
     }
 
