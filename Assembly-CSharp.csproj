@@ -49,8 +49,10 @@
      <Compile Include="Assets\Scripts\PlayerClass.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Restart.cs" />
+     <Compile Include="Assets\Scripts\RudimentaryAI.cs" />
      <Compile Include="Assets\Scripts\borderPatrol.cs" />
      <Compile Include="Assets\Scripts\comboListener.cs" />
+     <Compile Include="Assets\Scripts\fadingText.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

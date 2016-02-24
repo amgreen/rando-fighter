@@ -11,7 +11,6 @@ GameObject:
   - 222: {fileID: 22231596}
   - 114: {fileID: 11483872}
   - 61: {fileID: 6137724}
-  - 61: {fileID: 6177836}
   m_Layer: 5
   m_Name: fistlow
   m_TagString: middle
@@ -29,7 +28,6 @@ GameObject:
   - 224: {fileID: 22462280}
   - 222: {fileID: 22291212}
   - 114: {fileID: 11424420}
-  - 61: {fileID: 6168626}
   - 61: {fileID: 6133288}
   m_Layer: 5
   m_Name: fistlowplus
@@ -74,7 +72,6 @@ GameObject:
   - 222: {fileID: 22243962}
   - 114: {fileID: 11466808}
   - 61: {fileID: 6119914}
-  - 61: {fileID: 6199578}
   m_Layer: 5
   m_Name: footplus
   m_TagString: lowCombo
@@ -129,7 +126,6 @@ GameObject:
   - 222: {fileID: 22225874}
   - 114: {fileID: 11410246}
   - 61: {fileID: 6123090}
-  - 61: {fileID: 6170480}
   m_Layer: 5
   m_Name: foot
   m_TagString: low
@@ -244,62 +240,6 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199406}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 25, y: 15}
---- !u!61 &6168626
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137904}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 2.5908833, y: 0.0000019073486}
-  serializedVersion: 2
-  m_Size: {x: 20.00005, y: 15}
---- !u!61 &6170480
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199866}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 15, y: 10}
---- !u!61 &6177836
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122778}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 15, y: 10}
---- !u!61 &6199578
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 196036}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -589,12 +529,18 @@ MonoBehaviour:
   punchMedSound: {fileID: 0}
   punchLowSound: {fileID: 0}
   dash: {fileID: 0}
-  punchThreshold: 0.5
-  punchLowComboThreshold: 1.5
-  punchMedComboThreshold: 1.5
-  punchHighComboThreshold: 1.5
-  dashThreshold: 0.5
-  comboTimeout: 0.5
+  punchThreshold: 0.4
+  punchLowComboThreshold: 0.4
+  punchMedComboThreshold: 0.4
+  punchHighComboThreshold: 0.4
+  dashThreshold: 1
+  comboTimeout: 1.3
+  p1Combo1: {fileID: 0}
+  p1Combo2: {fileID: 0}
+  p1Combo3: {fileID: 0}
+  p2Combo1: {fileID: 0}
+  p2Combo2: {fileID: 0}
+  p2Combo3: {fileID: 0}
   punchHighBool1: 0
   punchMedBool1: 0
   punchLowBool1: 0
@@ -611,6 +557,14 @@ MonoBehaviour:
   punchLowComboBool2: 0
   dashLeftBool2: 0
   dashRightBool2: 0
+  p1c1Bool: 0
+  p1c2Bool: 0
+  p1c3Bool: 0
+  p1DBool: 0
+  p2c1Bool: 0
+  p2c2Bool: 0
+  p2c3Bool: 0
+  p2DBool: 0
 --- !u!114 &11466808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -730,12 +684,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd037fff39d7544a949ba0e5c281253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 200
   myHealthBar: {fileID: 0}
   comboDamageMultiplier: 2.5
   comboTimeMultiplier: 2
   attackTimeHigh: 0.22
-  attackTimeMiddle: 0.15
+  attackTimeMiddle: 0.13
   attackTimeLow: 0.2
   attackTimeProjectile: 1
   attackDamageHigh: 7
