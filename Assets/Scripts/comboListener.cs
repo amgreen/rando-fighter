@@ -134,8 +134,8 @@ public class comboListener : MonoBehaviour
 
     ButtonPressed bpInput;          //Unimportant placeholder for ButtonPressed Object
 
-    Queue<ButtonPressed> buttonPressedQueue = new Queue<ButtonPressed>();   //The queue used to store the input buffer
-    Queue<ButtonPressed> buttonPressedQueue2 = new Queue<ButtonPressed>();
+    public Queue<ButtonPressed> buttonPressedQueue = new Queue<ButtonPressed>();   //The queue used to store the input buffer
+    public Queue<ButtonPressed> buttonPressedQueue2 = new Queue<ButtonPressed>();
 
     Dictionary<int, KeyCode> inputMappings1 = new Dictionary<int, KeyCode>();    //Dictionary used for randomizing input
     Dictionary<int, KeyCode> inputMappings2 = new Dictionary<int, KeyCode>();
