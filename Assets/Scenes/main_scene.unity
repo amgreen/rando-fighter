@@ -775,17 +775,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: ground
-      value: 
-      objectReference: {fileID: 1097942773}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: myHealthBar
       value: 
       objectReference: {fileID: 212648990}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: ground
+      value: 
+      objectReference: {fileID: 1097942773}
     - target: {fileID: 179232, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: attackTimeMiddle
+      value: 0.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
@@ -1401,19 +1405,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: attackDamageLow
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: attackTimeHigh
-      value: 0.6
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: attackTimeMiddle
-      value: 0.2
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: attackTimeLow
-      value: 0.4
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: wall
