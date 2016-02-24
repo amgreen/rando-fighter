@@ -25,9 +25,9 @@ public class comboListener : MonoBehaviour
 
     public class ComboTimes
     {
-        public float Hadouken { get; set; }        //Time value since last Hadouken
-        public float Tatsumaki { get; set; }       //Time value since last Tatsumaki
-        public float Whirlwind { get; set; }       //Time value since last Whirlwind
+        //public float Hadouken { get; set; }        //Time value since last Hadouken
+        //public float Tatsumaki { get; set; }       //Time value since last Tatsumaki
+        //public float Whirlwind { get; set; }       //Time value since last Whirlwind
         public float Punch { get; set; }
         public float PunchHighCombo { get; set; }
         public float PunchMedCombo { get; set; }
@@ -36,13 +36,13 @@ public class comboListener : MonoBehaviour
         public float Dash { get; set; }
         public ComboTimes()
         {
-            Hadouken = 0f;
-            Tatsumaki = 0f;
-            Whirlwind = 0f;
-            Punch = 0f;
-            PunchHighCombo = 0f;
-            PunchMedCombo = 0f;
-            PunchLowCombo = 0f;
+            //Hadouken = -5f;
+            //Tatsumaki = -5f;
+            //Whirlwind = -5f;
+            Punch = -5f;
+            PunchHighCombo = -5f;
+            PunchMedCombo = -5f;
+            PunchLowCombo = -5f;
             //LastCombo = 0f;
             Dash = 0f;
         }
@@ -94,11 +94,11 @@ public class comboListener : MonoBehaviour
     public float punchMedThreshold = .5f;
     public float punchLowThreshold = .5f;
     */
-    public float punchThreshold = .5f;
-    public float punchLowComboThreshold = 1.5f;
-    public float punchMedComboThreshold = 1.5f;
-    public float punchHighComboThreshold = 1.5f;
-    public float dashThreshold = 0.5f;
+    public float punchThreshold;
+    public float punchLowComboThreshold;
+    public float punchMedComboThreshold;
+    public float punchHighComboThreshold;
+    public float dashThreshold;
 
     //char[] comboHadouken = new char[3] { '8', '8', '8' };           //char array that stores input to combo
     //char[] comboTatsumaki = new char[3] { '8', '8', '8' };          //8 isn't a char being used. 
@@ -253,21 +253,30 @@ public class comboListener : MonoBehaviour
                     ButtonPressed bp = new ButtonPressed('5', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
                     if (Time.time - player1Times.Punch > punchThreshold)
+                    {
+                        player1Times.Punch = Time.time;
                         punchHighBool1 = true;
+                    }
                 }
                 if (Input.GetKeyDown(inputMappings1[1]))
                 {
                     ButtonPressed bp = new ButtonPressed('6', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
                     if (Time.time - player1Times.Punch > punchThreshold)
+                    {
+                        player1Times.Punch = Time.time;
                         punchMedBool1 = true;
+                    }
                 }
                 if (Input.GetKeyDown(inputMappings1[2]))
                 {
                     ButtonPressed bp = new ButtonPressed('7', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
                     if (Time.time - player1Times.Punch > punchThreshold)
+                    {
+                        player1Times.Punch = Time.time;
                         punchLowBool1 = true;
+                    }
                 }
             }
 
@@ -299,21 +308,30 @@ public class comboListener : MonoBehaviour
                     ButtonPressed bp = new ButtonPressed('5', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
                     if (Time.time - player2Times.Punch > punchThreshold)
+                    {
+                        player2Times.Punch = Time.time;
                         punchHighBool2 = true;
+                    }
                 }
                 if (Input.GetKeyDown(inputMappings2[1]))
                 {
                     ButtonPressed bp = new ButtonPressed('6', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
                     if (Time.time - player2Times.Punch > punchThreshold)
+                    {
+                        player2Times.Punch = Time.time;
                         punchMedBool2 = true;
+                    }
                 }
                 if (Input.GetKeyDown(inputMappings2[2]))
                 {
                     ButtonPressed bp = new ButtonPressed('7', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
                     if (Time.time - player2Times.Punch > punchThreshold)
+                    {
+                        player2Times.Punch = Time.time;
                         punchLowBool2 = true;
+                    }
                 }
             }
         }
@@ -346,22 +364,30 @@ public class comboListener : MonoBehaviour
                     ButtonPressed bp = new ButtonPressed('5', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
                     if (Time.time - player1Times.Punch > punchThreshold)
+                    {
+                        player1Times.Punch = Time.time;
                         punchHighBool1 = true;
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.Y))
                 {
                     ButtonPressed bp = new ButtonPressed('6', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
                     if (Time.time - player1Times.Punch > punchThreshold)
+                    {
+                        player1Times.Punch = Time.time;
                         punchMedBool1 = true;
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.U))
                 {
                     ButtonPressed bp = new ButtonPressed('7', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
                     if (Time.time - player1Times.Punch > punchThreshold)
+                    {
+                        player1Times.Punch = Time.time;
                         punchLowBool1 = true;
-
+                    }
                 }
             }
             else
@@ -391,21 +417,30 @@ public class comboListener : MonoBehaviour
                     ButtonPressed bp = new ButtonPressed('5', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
                     if (Time.time - player2Times.Punch > punchThreshold)
+                    {
+                        player2Times.Punch = Time.time;
                         punchHighBool2 = true;
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.Keypad2))
                 {
                     ButtonPressed bp = new ButtonPressed('6', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
                     if (Time.time - player2Times.Punch > punchThreshold)
+                    {
+                        player2Times.Punch = Time.time;
                         punchMedBool2 = true;
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.Keypad3))
                 {
                     ButtonPressed bp = new ButtonPressed('7', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
                     if (Time.time - player2Times.Punch > punchThreshold)
+                    {
+                        player2Times.Punch = Time.time;
                         punchLowBool2 = true;
+                    }
                 }
             }
         }
