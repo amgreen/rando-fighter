@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour {
             //quick dash
             if (gameObject.GetComponent<comboListener>().dashLeftBool2)
             {
+                if (facingleft == false)
+                {
+                    gameObject.transform.Rotate(0, 180, 0);
+                }
                 facingleft = true;
                 if (inAir)
                 {
@@ -43,11 +47,16 @@ public class PlayerController : MonoBehaviour {
                     transform.position += Vector3.left * dashSpeed * Time.deltaTime;
                     gameObject.GetComponent<comboListener>().dashLeftBool2 = false;
                     gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
-                    
                 }
+                    
+                
             }
             if (gameObject.GetComponent<comboListener>().dashRightBool2)
             {
+                if (facingleft == true)
+                {
+                    gameObject.transform.Rotate(0, 180, 0);
+                }
                 facingleft = false;
                 if (inAir)
                 {
@@ -58,8 +67,9 @@ public class PlayerController : MonoBehaviour {
                     transform.position += Vector3.right * dashSpeed * Time.deltaTime;
                     gameObject.GetComponent<comboListener>().dashRightBool2 = false;
                     gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
-                    
                 }
+                    
+                
             }
 
 
@@ -116,13 +126,12 @@ public class PlayerController : MonoBehaviour {
                 {
                     gameObject.GetComponent<comboListener>().dashLeftBool1 = false;
                 }
-                else
-                {
+                
                     transform.position += Vector3.left * dashSpeed * Time.deltaTime;
                     gameObject.GetComponent<comboListener>().dashLeftBool1 = false;
                     gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
                     
-                }
+                
             }
             if (gameObject.GetComponent<comboListener>().dashRightBool1)
             {

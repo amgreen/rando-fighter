@@ -734,13 +734,13 @@ MonoBehaviour:
   myHealthBar: {fileID: 0}
   comboDamageMultiplier: 2.5
   comboTimeMultiplier: 2
-  attackTimeHigh: 0.4
+  attackTimeHigh: 0.22
   attackTimeMiddle: 0.15
-  attackTimeLow: 0.27
+  attackTimeLow: 0.2
   attackTimeProjectile: 1
   attackDamageHigh: 7
   attackDamageMiddle: 3
-  attackDamageLow: 5
+  attackDamageLow: 4
   currentlyAttacking: 0
   attackedAlready: 0
   myFist: {fileID: 196522}
