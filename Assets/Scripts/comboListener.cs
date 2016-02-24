@@ -49,20 +49,7 @@ public class comboListener : MonoBehaviour
     }
     ComboTimes player1Times = new ComboTimes();
     ComboTimes player2Times = new ComboTimes();
-
-    /*
-    TOTALLY RANDOM
-    Player 1 QAZ WSX EDC RFV TGB
-    Player 2 ]'/ [;. PL, OKM IJN
-
-    ARROW KEYS SET
-    Player 1 WASD TYU GHJ
-    Player 2 ARROW 456 123
-
-    EVERYTHING SET
-    Player 1 WASD TYU
-    Player 2 ARROW 123
-    */
+    
     public int layout = 3;
     /*
         Stores which kind of layout 
@@ -71,8 +58,6 @@ public class comboListener : MonoBehaviour
         3: EVERYTHING SET 
     */
     public int keyBufferSize = 8;   //Determines how many key inputs to store in the queue. A larger number will slow performance.
-
-    //int comboTextLinger = 2;        //Determines how long your combo text will stay on screen before disappearing
 
     /*
     public AudioClip hadoukenSound;      //Pointer to hadouken2.wav
@@ -89,11 +74,6 @@ public class comboListener : MonoBehaviour
     //float hadoukenThreshold = 1f;        //Amount of buffer time between hadoukens
     //float tatsumakiThreshold = 1f;       //Amount of buffer time between tatsumakis
     //float whirlwindThreshold = 2f;       //Amount of buffer time between whirlwinds
-    /*
-    public float punchHighThreshold = .5f;
-    public float punchMedThreshold = .5f;
-    public float punchLowThreshold = .5f;
-    */
     public float punchThreshold;
     public float punchLowComboThreshold;
     public float punchMedComboThreshold;
@@ -111,24 +91,12 @@ public class comboListener : MonoBehaviour
 
     public float comboTimeout = 1.0f;
 
-    /*
-    float comboTimeHadouken;        //Time value since last Hadouken
-    float comboTimeTatsumaki;       //Time value since last Tatsumaki
-    float comboTimeWhirlwind;       //Time value since last Whirlwind
-    float comboTimePunchHigh;
-    float comboTimePunchMed;
-    float comboTimePunchLow;
-    float timeLastCombo;            //Amount of time since last combo
-
-    float comboTimeHadouken2;
-    float comboTimeTatsumaki2;
-    float comboTimeWhirlwind2;
-    float comboTimePunchHigh2;
-    float comboTimePunchMed2;
-    float comboTimePunchLow2;
-    float timeLastCombo2;
-    //char lastInput;                 //Stores what was last pressed so we don't get repeats  DEPRECIATED
-    */
+    public Text p1Combo1;
+    public Text p1Combo2;
+    public Text p1Combo3;
+    public Text p2Combo1;
+    public Text p2Combo2;
+    public Text p2Combo3;
 
     int[] randomIntArray;           //Random int array that determines which layout
 
@@ -158,6 +126,15 @@ public class comboListener : MonoBehaviour
     public bool dashLeftBool2 = false;
     public bool dashRightBool2 = false;
 
+    public bool p1c1Bool = false;
+    public bool p1c2Bool = false;
+    public bool p1c3Bool = false;
+    public bool p1DBool = false;
+    public bool p2c1Bool = false;
+    public bool p2c2Bool = false;
+    public bool p2c3Bool = false;
+    public bool p2DBool = false;
+
     void Start()
     {
         // '1' up
@@ -167,24 +144,6 @@ public class comboListener : MonoBehaviour
         // '5' high
         // '6' medium
         // '7' low
-
-        /*
-        timeLastCombo = 0f;
-        comboTimeHadouken = 0f;
-        comboTimeTatsumaki = 0f;
-        comboTimeWhirlwind = 0f;
-        comboTimePunchHigh = 0f;
-        comboTimePunchMed = 0f;
-        comboTimePunchLow = 0f;
-
-        timeLastCombo2 = 0f;
-        comboTimeHadouken2 = 0f;
-        comboTimeTatsumaki2 = 0f;
-        comboTimeWhirlwind2 = 0f;
-        comboTimePunchHigh2 = 0f;
-        comboTimePunchMed2 = 0f;
-        comboTimePunchLow2 = 0f;
-        */
 
         audio = GetComponent<AudioSource>();
 
@@ -556,6 +515,22 @@ public class comboListener : MonoBehaviour
         print("The print stack is: " + s);
     }
 
+    public char keyCodeReturn(KeyCode kc) {
+        if (kc == KeyCode.T)
+            return 'T';
+        else if (kc == KeyCode.Y)
+            return 'Y';
+        else if (kc == KeyCode.U)
+            return 'U';
+        else if (kc == KeyCode.Keypad1)
+            return '1';
+        else if (kc == KeyCode.Keypad2)
+            return '2';
+        else if (kc == KeyCode.Keypad3)
+            return '3';
+        else return ' ';
+    }
+
     public void buttonPressedEnqueue(Queue<ButtonPressed> q, ButtonPressed bp)
     {
         while (q.Count > 0 && Time.time - q.Peek().TimeCreated > comboTimeout)
@@ -626,7 +601,7 @@ public class comboListener : MonoBehaviour
             //player1Times.LastCombo = Time.time;
             audio.PlayOneShot(punchHighSound);
             punchHighComboBool1 = true;
-
+            p1c1Bool = true;
             q.Clear();
         }
         if (containsCombo(qPunchMed, comboPunchMed, 0) && Time.time - player1Times.PunchMedCombo > punchMedComboThreshold)
@@ -635,6 +610,7 @@ public class comboListener : MonoBehaviour
             //player1Times.LastCombo = Time.time;
             audio.PlayOneShot(punchMedSound);
             punchMedComboBool1 = true;
+            p1c2Bool = true;
             q.Clear();
         }
         if (containsCombo(qPunchLow, comboPunchLow, 0) && Time.time - player1Times.PunchLowCombo > punchLowComboThreshold)
@@ -643,6 +619,7 @@ public class comboListener : MonoBehaviour
             //player1Times.LastCombo = Time.time;
             audio.PlayOneShot(punchLowSound);
             punchLowComboBool1 = true;
+            p1c3Bool = true;
             q.Clear();
         }
         if (containsCombo(qDashLeft, comboDashLeft, 0) && Time.time - player1Times.Dash > dashThreshold)
@@ -651,6 +628,7 @@ public class comboListener : MonoBehaviour
             //player2Times.LastCombo = Time.time;
             audio.PlayOneShot(dash);
             dashLeftBool1 = true;
+            p1DBool = true;
             q.Clear();
         }
         if (containsCombo(qDashRight, comboDashRight, 0) && Time.time - player1Times.Dash > dashThreshold)
@@ -659,7 +637,7 @@ public class comboListener : MonoBehaviour
             //player2Times.LastCombo = Time.time;
             audio.PlayOneShot(dash);
             dashRightBool1 = true;
-
+            p1DBool = true;
             q.Clear();
         }
         //queuePrint(q);
@@ -736,7 +714,7 @@ public class comboListener : MonoBehaviour
             //player2Times.LastCombo = Time.time;
             audio.PlayOneShot(punchHighSound);
             punchHighComboBool2 = true;
-
+            p2c1Bool = true;
             q.Clear();
         }
         if (containsCombo(qPunchMed, comboPunchMed, 0) && Time.time - player2Times.PunchMedCombo > punchMedComboThreshold)
@@ -746,7 +724,7 @@ public class comboListener : MonoBehaviour
             //player2Times.LastCombo = Time.time;
             audio.PlayOneShot(punchMedSound);
             punchMedComboBool2 = true;
-
+            p2c2Bool = true;
             q.Clear();
         }
         if (containsCombo(qPunchLow, comboPunchLow, 0) && Time.time - player2Times.PunchLowCombo > punchLowComboThreshold)
@@ -756,6 +734,7 @@ public class comboListener : MonoBehaviour
             //player2Times.LastCombo = Time.time;
             audio.PlayOneShot(punchLowSound);
             punchLowComboBool2 = true;
+            p2c3Bool = true;
             q.Clear();
         }
         if (containsCombo(qDashLeft, comboDashLeft, 0) && Time.time - player2Times.Dash > dashThreshold)
@@ -764,6 +743,7 @@ public class comboListener : MonoBehaviour
             //player2Times.LastCombo = Time.time;
             audio.PlayOneShot(dash);
             dashLeftBool2 = true;
+            p2DBool = true;
             q.Clear();
         }
         if (containsCombo(qDashRight, comboDashRight, 0) && Time.time - player2Times.Dash > dashThreshold)
@@ -772,7 +752,7 @@ public class comboListener : MonoBehaviour
             //player2Times.LastCombo = Time.time;
             audio.PlayOneShot(dash);
             dashRightBool2 = true;
-
+            p2DBool = true;
             q.Clear();
         }
         //queuePrint(q);
@@ -796,8 +776,13 @@ public class comboListener : MonoBehaviour
                     inputMappings1.Add(randomIntArray[i], charArray1[i]);
                     s += randomIntArray[i] + "" + charArray1[i] + "  ";
                 }
-                print("The cipher1 is: " + s);
-                
+                //print("The cipher1 is: " + s);
+                char high = keyCodeReturn(inputMappings1[0]);
+                char mid = keyCodeReturn(inputMappings1[1]);
+                char low = keyCodeReturn(inputMappings1[2]);
+                p1Combo1.text = "Uppercut - "+high+" "+mid+" "+high;
+                p1Combo2.text = "Haymaker - " + mid + " " + low + " " + high;
+                p1Combo3.text = "Sweep - " + low + " " + mid;
             }
             else
             {
@@ -809,7 +794,13 @@ public class comboListener : MonoBehaviour
                     inputMappings2.Add(randomIntArray[i], charArray2[i]);
                     s += randomIntArray[i] + "" + charArray2[i] + "  ";
                 }
-                print("The cipher2 is: " + s);
+                //print("The cipher2 is: " + s);
+                char high = keyCodeReturn(inputMappings2[0]);
+                char mid = keyCodeReturn(inputMappings2[1]);
+                char low = keyCodeReturn(inputMappings2[2]);
+                p2Combo1.text = "Uppercut - " + high + " " + mid + " " + high;
+                p2Combo2.text = "Haymaker - " + mid + " " + low + " " + high;
+                p2Combo3.text = "Sweep - " + low + " " + mid;
             }
         }
         else if (layout == 3)
