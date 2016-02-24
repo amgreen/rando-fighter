@@ -34,6 +34,7 @@ public class comboListener : MonoBehaviour
         public float PunchLowCombo { get; set; }
         //public float LastCombo { get; set; }            //Amount of time since last combo
         public float Dash { get; set; }
+        public float LeftRightPressed { get; set; }
         public ComboTimes()
         {
             //Hadouken = -5f;
@@ -45,6 +46,7 @@ public class comboListener : MonoBehaviour
             PunchLowCombo = -5f;
             //LastCombo = 0f;
             Dash = 0f;
+            LeftRightPressed = 0f;
         }
     }
     ComboTimes player1Times = new ComboTimes();
@@ -185,6 +187,21 @@ public class comboListener : MonoBehaviour
     {
         //if (Time.time - timeLastCombo > comboTextLinger) comboOutput.text = "(Nothing!)";
         //if (Time.time - timeLastCombo2 > comboTextLinger) comboOutput2.text = "(Nothing!)";
+        if (!gameObject.GetComponent<PlayerController>().player2)
+        {
+            if (Time.time - player1Times.LeftRightPressed > 0.4)
+            {
+                lastLeftPressed = false;
+                lastRightPressed = false;
+            }
+        }
+        else {
+            if (Time.time - player2Times.LeftRightPressed > 0.5)
+            {
+                lastLeftPressed = false;
+                lastRightPressed = false;
+            }
+        }
 
         if (layout == 2)
         {
@@ -214,6 +231,7 @@ public class comboListener : MonoBehaviour
                     ButtonPressed bp = new ButtonPressed('3', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
                     */
+                    player1Times.LeftRightPressed = Time.time;
                     if (lastLeftPressed && Time.time - player1Times.Dash > dashThreshold)
                     {
                         player1Times.Dash = Time.time;
@@ -230,6 +248,7 @@ public class comboListener : MonoBehaviour
                     ButtonPressed bp = new ButtonPressed('4', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
                     */
+                    player1Times.LeftRightPressed = Time.time;
                     if (lastRightPressed && Time.time - player1Times.Dash > dashThreshold)
                     {
                         player1Times.Dash = Time.time;
@@ -294,6 +313,7 @@ public class comboListener : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
+                    player2Times.LeftRightPressed = Time.time;
                     /*
                     ButtonPressed bp = new ButtonPressed('3', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
@@ -310,6 +330,7 @@ public class comboListener : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
+                    player2Times.LeftRightPressed = Time.time;
                     /*
                     ButtonPressed bp = new ButtonPressed('4', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
@@ -380,6 +401,7 @@ public class comboListener : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.A))
                 {
+                    player1Times.LeftRightPressed = Time.time;
                     /*
                     ButtonPressed bp = new ButtonPressed('3', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
@@ -396,6 +418,7 @@ public class comboListener : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.D))
                 {
+                    player1Times.LeftRightPressed = Time.time;
                     /*
                     ButtonPressed bp = new ButtonPressed('4', Time.time);
                     buttonPressedEnqueue(buttonPressedQueue, bp);
@@ -469,6 +492,7 @@ public class comboListener : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
+                    player2Times.LeftRightPressed = Time.time;
                     /*
                     ButtonPressed bp = new ButtonPressed('3', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
@@ -485,6 +509,7 @@ public class comboListener : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
+                    player2Times.LeftRightPressed = Time.time;
                     /*
                     ButtonPressed bp = new ButtonPressed('4', Time.time);
                     buttonPressedEnqueue2(buttonPressedQueue2, bp);
