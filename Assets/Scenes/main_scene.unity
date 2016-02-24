@@ -115,6 +115,8 @@ RectTransform:
   - {fileID: 1543049137}
   - {fileID: 2001138315}
   - {fileID: 604826669}
+  - {fileID: 1349424838}
+  - {fileID: 1173945693}
   m_Father: {fileID: 1596306339}
   m_RootOrder: 17
   m_AnchorMin: {x: 0, y: 0}
@@ -1616,15 +1618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cf8f85ac5dc9a45ae58f6bee5d3d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.75
-  p1c1: {fileID: 330585647}
-  p1c2: {fileID: 656191682}
-  p1c3: {fileID: 262317616}
-  p1D: {fileID: 474047525}
-  p2c1: {fileID: 1188892101}
-  p2c2: {fileID: 1209825439}
-  p2c3: {fileID: 620548631}
-  p2D: {fileID: 459430643}
 --- !u!224 &1155990691 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22452600, guid: 5e56c30e6aa6a944fbf170b23c0a27e4,
@@ -1659,8 +1652,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 96755764}
-  m_Father: {fileID: 1596306339}
-  m_RootOrder: 19
+  m_Father: {fileID: 18182645}
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.8703207, y: 0.5}
   m_AnchorMax: {x: 0.8703207, y: 0.5}
   m_AnchoredPosition: {x: 3, y: 9.41}
@@ -2189,8 +2182,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1239877486}
-  m_Father: {fileID: 1596306339}
-  m_RootOrder: 18
+  m_Father: {fileID: 18182645}
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.7283924, y: 0.5}
   m_AnchorMax: {x: 0.7283924, y: 0.5}
   m_AnchoredPosition: {x: 8, y: 9.410004}
@@ -2878,8 +2871,6 @@ RectTransform:
   - {fileID: 459430642}
   - {fileID: 1309341869}
   - {fileID: 18182645}
-  - {fileID: 1349424838}
-  - {fileID: 1173945693}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
