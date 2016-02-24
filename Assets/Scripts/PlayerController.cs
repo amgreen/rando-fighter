@@ -126,11 +126,12 @@ public class PlayerController : MonoBehaviour {
                 {
                     gameObject.GetComponent<comboListener>().dashLeftBool1 = false;
                 }
-                
+                else
+                {
                     transform.position += Vector3.left * dashSpeed * Time.deltaTime;
                     gameObject.GetComponent<comboListener>().dashLeftBool1 = false;
                     gameObject.GetComponent<Animator>().SetTrigger("dashAtk");
-                    
+                }
                 
             }
             if (gameObject.GetComponent<comboListener>().dashRightBool1)
