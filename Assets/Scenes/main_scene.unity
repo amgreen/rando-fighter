@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &18182645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1367,58 +1367,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: myHealthBar
-      value: 
-      objectReference: {fileID: 212648990}
-    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: ground
-      value: 
-      objectReference: {fileID: 1097942773}
-    - target: {fileID: 179232, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: m_Name
-      value: Player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: attackTimeMiddle
-      value: 0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: layout
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: punchLowComboThreshold
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: punchMedComboThreshold
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: punchHighComboThreshold
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: comboTimeout
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: dashThreshold
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: punchThreshold
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: dash
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
-      propertyPath: health
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: p1Combo1
       value: 
@@ -1431,6 +1379,22 @@ Prefab:
       propertyPath: p1Combo3
       value: 
       objectReference: {fileID: 262317616}
+    - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: ground
+      value: 
+      objectReference: {fileID: 1097942773}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: myHealthBar
+      value: 
+      objectReference: {fileID: 212648990}
+    - target: {fileID: 179232, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: m_Name
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: comboTimeout
+      value: 3.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
   m_IsPrefabParent: 0
@@ -2429,7 +2393,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: comboTimeout
-      value: 1.3
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 22452600, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: m_LocalScale.y
@@ -2655,7 +2619,19 @@ Prefab:
       propertyPath: p2Combo3
       value: 
       objectReference: {fileID: 620548631}
-    m_RemovedComponents: []
+    - target: {fileID: 137904, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196036, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6133288, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1543049136
@@ -3089,20 +3065,6 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 196036, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
   m_PrefabInternal: {fileID: 1439511851}
---- !u!61 &1966440277
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1966440273}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 15, y: 10}
 --- !u!1 &2001138314
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,20 +3146,6 @@ CanvasRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 137904, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
   m_PrefabInternal: {fileID: 1439511851}
---- !u!61 &2113968461
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2113968457}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 15, y: 10}
 --- !u!1 &2124636915
 GameObject:
   m_ObjectHideFlags: 0
