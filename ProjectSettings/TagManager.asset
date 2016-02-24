@@ -13,6 +13,7 @@ TagManager:
   - highCombo
   - middleCombo
   - lowCombo
+  - GameMusic
   layers:
   - Default
   - TransparentFX

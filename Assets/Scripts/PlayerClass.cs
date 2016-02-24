@@ -33,7 +33,6 @@ public class PlayerClass : MonoBehaviour {
     public GameObject myFootCombo;
 
     public AudioClip[] audioClips;
-
     AudioSource audio;
 
 
@@ -42,9 +41,9 @@ public class PlayerClass : MonoBehaviour {
         initialHealth = health;
         audio = GetComponent<AudioSource>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (!gameObject.GetComponent<PlayerController>().player2)
         {
             if (gameObject.GetComponent<comboListener>().punchHighComboBool1)
