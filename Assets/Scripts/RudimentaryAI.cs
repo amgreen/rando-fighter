@@ -8,7 +8,7 @@ public class RudimentaryAI : MonoBehaviour {
 
     comboListener combos;
 
-    public float AIStartDelayTime = 4.0f;
+    public float AIStartDelayTime = 3.0f;
 
 
 	// Use this for initialization
@@ -25,6 +25,11 @@ public class RudimentaryAI : MonoBehaviour {
 
     public IEnumerator InitAI()
     {
+
+        while (GameObject.Find("MainMenu") != null)
+        {
+            yield return null;
+        }
         yield return new WaitForSeconds(AIStartDelayTime);
         StartCoroutine(DetermineMoveSet());
     }
