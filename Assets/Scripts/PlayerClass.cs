@@ -63,17 +63,17 @@ public class PlayerClass : MonoBehaviour {
             }
 
             //normal attacks
-            if (gameObject.GetComponent<comboListener>().punchHighBool1)
+            if (gameObject.GetComponent<comboListener>().punchHighBool1 && !active)
             {
                 StartCoroutine(Attack(AttackType.High));
                 gameObject.GetComponent<comboListener>().punchHighBool1 = false;
             }
-            if (gameObject.GetComponent<comboListener>().punchMedBool1)
+            if (gameObject.GetComponent<comboListener>().punchMedBool1 && !active)
             {
                 StartCoroutine(Attack(AttackType.Middle));
                 gameObject.GetComponent<comboListener>().punchMedBool1 = false;
             }
-            if (gameObject.GetComponent<comboListener>().punchLowBool1)
+            if (gameObject.GetComponent<comboListener>().punchLowBool1 && !active)
             {
                 StartCoroutine(Attack(AttackType.Low));
                 gameObject.GetComponent<comboListener>().punchLowBool1 = false;
@@ -99,17 +99,17 @@ public class PlayerClass : MonoBehaviour {
 
             //normal attacks
 
-            if (gameObject.GetComponent<comboListener>().punchHighBool2)
+            if (gameObject.GetComponent<comboListener>().punchHighBool2 && !active)
             {
                 StartCoroutine(Attack(AttackType.High));
                 gameObject.GetComponent<comboListener>().punchHighBool2 = false;
             }
-            if (gameObject.GetComponent<comboListener>().punchMedBool2)
+            if (gameObject.GetComponent<comboListener>().punchMedBool2 && !active)
             {
                 StartCoroutine(Attack(AttackType.Middle));
                 gameObject.GetComponent<comboListener>().punchMedBool2 = false;
             }
-            if (gameObject.GetComponent<comboListener>().punchLowBool2)
+            if (gameObject.GetComponent<comboListener>().punchLowBool2 && !active)
             {
                 StartCoroutine(Attack(AttackType.Low));
                 gameObject.GetComponent<comboListener>().punchLowBool2 = false;

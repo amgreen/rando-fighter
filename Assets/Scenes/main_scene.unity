@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &18182645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1393,7 +1393,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: comboTimeout
-      value: 3.2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: dashThreshold
@@ -1402,6 +1402,18 @@ Prefab:
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: health
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: attackTimeMiddle
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: attackTimeHigh
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
+      propertyPath: attackTimeLow
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
@@ -2401,7 +2413,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11441630, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: comboTimeout
-      value: 3.2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 22452600, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: m_LocalScale.y
@@ -2505,15 +2517,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: attackTimeHigh
-      value: 0.22
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: attackTimeMiddle
-      value: 0.13
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 11499070, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: attackTimeLow
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 11403818, guid: 5e56c30e6aa6a944fbf170b23c0a27e4, type: 2}
       propertyPath: wall
