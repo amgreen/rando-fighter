@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+[RequireComponent(typeof(AudioSource))]
 public class PlayerClass : MonoBehaviour {
 
     public float health = 100;
@@ -32,12 +32,16 @@ public class PlayerClass : MonoBehaviour {
     public GameObject middleFistCombo;
     public GameObject myFootCombo;
 
+    public AudioClip[] audioClips;
+
+    AudioSource audio;
+
 
     // Use this for initialization
     void Start () {
         initialHealth = health;
-
-	}
+        audio = GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -205,6 +209,11 @@ public class PlayerClass : MonoBehaviour {
         attackedAlready = false;
     }
 
+    void playSound(int clip)
+    {
+        audio.PlayOneShot(audioClips[clip]);
+    }
+
     void turnOffAttacks()
     {
         myFist.SetActive(false);
@@ -223,6 +232,7 @@ public class PlayerClass : MonoBehaviour {
                 attackedAlready = true;
                 health -= attackDamageHigh;
                 Debug.Log("Health: " + health);
+            playSound(0);
             
             gameObject.GetComponent<Animator>().SetTrigger("playerHit");
         }
@@ -233,7 +243,7 @@ public class PlayerClass : MonoBehaviour {
                 health -= attackDamageMiddle;
                 Debug.Log("Health: " + health);
                 gameObject.GetComponent<Animator>().SetTrigger("playerHit");
-            
+            playSound(1);
         }
         if (otherObject.tag == "low")
         {
@@ -241,6 +251,7 @@ public class PlayerClass : MonoBehaviour {
             health -= attackDamageLow;
             Debug.Log("Health: " + health);
             gameObject.GetComponent<Animator>().SetTrigger("playerHit");
+            playSound(2);
         }
 
 
@@ -253,6 +264,7 @@ public class PlayerClass : MonoBehaviour {
             health -= attackDamageHigh * comboDamageMultiplier;
             Debug.Log("Health: " + health);
             gameObject.GetComponent<Animator>().SetTrigger("playerHit");
+            playSound(3);
         }
         if (otherObject.tag == "middleCombo")
         {
@@ -260,7 +272,8 @@ public class PlayerClass : MonoBehaviour {
             health -= attackDamageMiddle * comboDamageMultiplier;
             Debug.Log("Health: " + health);
             gameObject.GetComponent<Animator>().SetTrigger("playerHit");
-            
+            playSound(4);
+
         }
         if (otherObject.tag == "lowCombo")
         {
@@ -269,7 +282,7 @@ public class PlayerClass : MonoBehaviour {
                 health -= attackDamageLow * comboDamageMultiplier;
                 Debug.Log("Health: " + health);
                 gameObject.GetComponent<Animator>().SetTrigger("playerHit");
-            
+            playSound(5);
         }
 
     }

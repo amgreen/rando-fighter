@@ -33,7 +33,7 @@ GameObject:
   - 61: {fileID: 6133288}
   m_Layer: 5
   m_Name: fistlowplus
-  m_TagString: middle
+  m_TagString: middleCombo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,9 +52,10 @@ GameObject:
   - 61: {fileID: 6130122}
   - 114: {fileID: 11499070}
   - 114: {fileID: 11403818}
-  - 82: {fileID: 8274580}
+  - 82: {fileID: 8262890}
   - 114: {fileID: 11441630}
   - 95: {fileID: 9556632}
+  - 82: {fileID: 8296610}
   m_Layer: 5
   m_Name: Player
   m_TagString: Player
@@ -76,7 +77,7 @@ GameObject:
   - 61: {fileID: 6199578}
   m_Layer: 5
   m_Name: footplus
-  m_TagString: low
+  m_TagString: lowCombo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +113,7 @@ GameObject:
   - 61: {fileID: 6167532}
   m_Layer: 5
   m_Name: fistplus
-  m_TagString: high
+  m_TagString: highCombo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,9 +165,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 4.0725913, y: 0.000008583069}
   serializedVersion: 2
-  m_Size: {x: 25, y: 15}
+  m_Size: {x: 16.42724, y: 15}
 --- !u!61 &6123090
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -178,9 +179,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.0932662, y: -0.19618729}
   serializedVersion: 2
-  m_Size: {x: 15, y: 10}
+  m_Size: {x: 12.813286, y: 7.364826}
 --- !u!61 &6126648
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -192,9 +193,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.0167277, y: -0.026361614}
   serializedVersion: 2
-  m_Size: {x: 15, y: 10}
+  m_Size: {x: 12.966449, y: 6.896847}
 --- !u!61 &6130122
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -234,9 +235,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.0468521, y: -0.00000047683716}
   serializedVersion: 2
-  m_Size: {x: 15, y: 10}
+  m_Size: {x: 12.906282, y: 10}
 --- !u!61 &6167532
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -262,9 +263,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 2.5908833, y: 0.0000019073486}
   serializedVersion: 2
-  m_Size: {x: 25, y: 15}
+  m_Size: {x: 20.00005, y: 15}
 --- !u!61 &6170480
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -307,7 +308,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 25, y: 15}
---- !u!82 &8274580
+--- !u!82 &8262890
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -325,7 +326,81 @@ AudioSource:
   Spatialize: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 39.96991
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &8296610
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179232}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -411,11 +486,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 0}
   speed: 150
-  jumpSpeed: 20000
+  jumpSpeed: 12000
   dashSpeed: 3000
   inAir: 0
   player2: 0
-  facingleft: 1
+  facingleft: 0
 --- !u!114 &11410246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -455,7 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -482,7 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -514,9 +589,7 @@ MonoBehaviour:
   punchMedSound: {fileID: 0}
   punchLowSound: {fileID: 0}
   dash: {fileID: 0}
-  punchHighThreshold: 0.5
-  punchMedThreshold: 0.5
-  punchLowThreshold: 0.5
+  punchThreshold: 0.5
   punchLowComboThreshold: 1.5
   punchMedComboThreshold: 1.5
   punchHighComboThreshold: 1.5
@@ -550,7 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -659,23 +732,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 300
   myHealthBar: {fileID: 0}
-  comboDamageMultiplier: 3
+  comboDamageMultiplier: 2.5
   comboTimeMultiplier: 2
-  attackTimeHigh: 1
-  attackTimeMiddle: 1
-  attackTimeLow: 1
+  attackTimeHigh: 0.4
+  attackTimeMiddle: 0.15
+  attackTimeLow: 0.27
   attackTimeProjectile: 1
-  attackDamageHigh: 20
-  attackDamageMiddle: 15
-  attackDamageLow: 15
+  attackDamageHigh: 7
+  attackDamageMiddle: 3
+  attackDamageLow: 5
   currentlyAttacking: 0
   attackedAlready: 0
   myFist: {fileID: 196522}
   middleFist: {fileID: 122778}
   myFoot: {fileID: 199866}
-  myFistCombo: {fileID: 0}
-  middleFistCombo: {fileID: 0}
-  myFootCombo: {fileID: 0}
+  myFistCombo: {fileID: 199406}
+  middleFistCombo: {fileID: 137904}
+  myFootCombo: {fileID: 196036}
+  audioClips:
+  - {fileID: 8300000, guid: 97e741314e82a6b4d8f09a3874098bb7, type: 3}
+  - {fileID: 8300000, guid: 4f8fc6ea296d7534584c65c21f8020c4, type: 3}
+  - {fileID: 8300000, guid: 9a16f1e00bdbfb340a10fc4aa459bc92, type: 3}
+  - {fileID: 8300000, guid: e55c58171f0537c44b85c9ba26490aaa, type: 3}
+  - {fileID: 8300000, guid: 42c3e8e6cba5bd44dbbb2d4ea35a05a3, type: 3}
+  - {fileID: 8300000, guid: 1f6c1308afbf7e24f8ddf7bc214f7e1b, type: 3}
 --- !u!222 &22225874
 CanvasRenderer:
   m_ObjectHideFlags: 1
